@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using WinuXGames.SplitFramework.UI.Scripts.ScriptableObjects;
+using WinuXGames.SplitFramework.UI.ScriptableObjects;
 
-namespace WinuXGames.SplitFramework.UI.Scripts.Interfaces
+namespace WinuXGames.SplitFramework.UI.Interfaces
 {
-    public class UIButtonInterface : UIInterface<SO_UIStyleButton>
+    public class UIButtonInterface : UIInterface<SO_UIStyleButton>, IUIButton
     {
         [SerializeField] private Button          _button;
         [SerializeField] private UITextInterface _buttonTextInterface;
@@ -15,10 +15,12 @@ namespace WinuXGames.SplitFramework.UI.Scripts.Interfaces
 
         public void SetText(string text) { _buttonTextInterface.SetText(text); }
 
-        private void OnValidate() { ApplyStyle(); }
-
         protected override void ApplyStyle()
         {
+            base.ApplyStyle();
+            
+            if (_button == null || Style == null || _buttonTextInterface == null) { return; }
+
             // Apply navigation
             Navigation buttonNavigation = _button.navigation;
             buttonNavigation.mode       = _navigationMode;
@@ -26,7 +28,7 @@ namespace WinuXGames.SplitFramework.UI.Scripts.Interfaces
             _button.navigation          = buttonNavigation;
 
             // Apply style
-            Style.Apply(_button, _buttonTextInterface.Text, RootCanvasInterface.Style.RenderMode, RootCanvasInterface.Style.ReferencePixelPerUnit);
+            Style.Apply(this, _buttonTextInterface);
         }
     }
 }

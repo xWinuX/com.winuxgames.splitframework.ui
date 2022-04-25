@@ -1,8 +1,7 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace WinuXGames.SplitFramework.UI.Scripts.ScriptableObjects
+namespace WinuXGames.SplitFramework.UI.ScriptableObjects
 {
     [CreateAssetMenu(menuName = "Split Framework/UI/Styles/Button", fileName = "UIStyleButton", order = 1)]
     public class SO_UIStyleButton : SO_UIStyle
@@ -11,19 +10,19 @@ namespace WinuXGames.SplitFramework.UI.Scripts.ScriptableObjects
         [SerializeField] private Sprite         _inactiveSprite;
         [SerializeField] private Sprite         _activeSprite;
 
-        public void Apply(Button button, TMP_Text text, RenderMode renderMode, float pixelPerUnit)
+        public void Apply(IUIButton button, IUIText text)
         {
-            button.image.sprite = _inactiveSprite;
+            button.Button.image.sprite = _inactiveSprite;
 
             // Apply active sprite
-            SpriteState buttonSpriteState = button.spriteState;
+            SpriteState buttonSpriteState = button.Button.spriteState;
             buttonSpriteState.disabledSprite    = _activeSprite;
             buttonSpriteState.highlightedSprite = _activeSprite;
             buttonSpriteState.pressedSprite     = _activeSprite;
             buttonSpriteState.selectedSprite    = _activeSprite;
-            button.spriteState                  = buttonSpriteState;
+            button.Button.spriteState           = buttonSpriteState;
 
-            _textStyle.Apply(text, renderMode, pixelPerUnit);
+            text.SetStyle(_textStyle);
         }
     }
 }

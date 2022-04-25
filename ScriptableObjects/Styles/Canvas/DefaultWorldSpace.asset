@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 857422ea100c4770be80700dac2d5d7f, type: 3}
-  m_Name: Default
+  m_Name: DefaultWorldSpace
   m_EditorClassIdentifier: 
+  _referenceResolution: {x: 640, y: 360}
   _referencePixelPerUnit: 36
-  _renderMode: 0
+  _renderMode: 2

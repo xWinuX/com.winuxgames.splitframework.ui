@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace WinuXGames.SplitFramework.UI.Scripts.ScriptableObjects
+namespace WinuXGames.SplitFramework.UI.ScriptableObjects
 {
     [CreateAssetMenu(menuName = "Split Framework/UI/Styles/Text", fileName = "UIStyleText", order = 0)]
     public class SO_UIStyleText : SO_UIStyle
@@ -9,10 +9,10 @@ namespace WinuXGames.SplitFramework.UI.Scripts.ScriptableObjects
         [SerializeField] private TMP_FontAsset _font;
         [SerializeField] private float         _size;
 
-        public void Apply(TMP_Text text, RenderMode renderMode, float pixelsPerUnit)
+        public void Apply(IUIText text)
         {
-            text.font     = _font;
-            text.fontSize = renderMode == RenderMode.WorldSpace ? _size/pixelsPerUnit : _size;
+            text.Text.font     = _font;
+            text.Text.fontSize = text.RootUICanvas.RenderMode == RenderMode.WorldSpace ? _size / text.RootUICanvas.ReferencePixelsPerUnit : _size;
         }
     }
 }

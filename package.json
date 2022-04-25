@@ -1,11 +1,12 @@
 {
   "name": "com.winuxgames.splitframework.ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "Split Framework UI",
   "description": "UI for Split Apart Games",
   "unity": "2021.2",
   "dependencies": {
-    "com.unity.textmeshpro": "3.0.6"
+    "com.unity.textmeshpro": "3.0.6",
+    "com.winuxgames.splitframework.utility": "https://github.com/xWinuX/com.winuxgames.splitframework.utility.git"
   },
   "keywords": [],
   "author": {
