@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using WinuXGames.SplitFramework.UI.Interfaces;
 
 namespace WinuXGames.SplitFramework.UI.ScriptableObjects
 {
@@ -7,7 +8,7 @@ namespace WinuXGames.SplitFramework.UI.ScriptableObjects
     public class SO_UIStyleCanvas : SO_UIStyle
     {
         [SerializeField] private Vector2Int _referenceResolution;
-        
+
         [SerializeField] private int        _referencePixelPerUnit;
         [SerializeField] private RenderMode _renderMode;
 
@@ -15,14 +16,14 @@ namespace WinuXGames.SplitFramework.UI.ScriptableObjects
         public int        ReferencePixelPerUnit => _referencePixelPerUnit;
         public Vector2Int ReferenceResolution   => _referenceResolution;
 
-        public void Apply(Canvas canvas, CanvasScaler scaler)
+        public void Apply(IUICanvas canvas)
         {
-            canvas.renderMode               = _renderMode;
-            canvas.additionalShaderChannels = AdditionalCanvasShaderChannels.TexCoord1;
-            scaler.uiScaleMode              = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution      = _referenceResolution;
-            scaler.dynamicPixelsPerUnit     = 1;
-            scaler.referencePixelsPerUnit   = _renderMode == RenderMode.WorldSpace ? 1 : _referencePixelPerUnit;
+            canvas.Canvas.renderMode                   = _renderMode;
+            canvas.Canvas.additionalShaderChannels     = AdditionalCanvasShaderChannels.TexCoord1;
+            canvas.CanvasScaler.uiScaleMode            = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            canvas.CanvasScaler.referenceResolution    = _referenceResolution;
+            canvas.CanvasScaler.dynamicPixelsPerUnit   = 1;
+            canvas.CanvasScaler.referencePixelsPerUnit = _renderMode == RenderMode.WorldSpace ? 1 : _referencePixelPerUnit;
         }
     }
 }

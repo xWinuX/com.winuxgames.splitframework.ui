@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using WinuXGames.SplitFramework.UI.Interfaces;
 using WinuXGames.SplitFramework.UI.ScriptableObjects;
 
-namespace WinuXGames.SplitFramework.UI.Interfaces
+namespace WinuXGames.SplitFramework.UI.UI
 {
     [RequireComponent(typeof(RectTransform))]
-    public abstract class UIInterface : MonoBehaviour, IUI
+    public abstract class UIBase : MonoBehaviour, IUI
     {
         public RectTransform RectTransform { get; private set; }
         public IUICanvas     RootUICanvas  { get; private set; } = new UICanvasMock();
@@ -43,7 +44,7 @@ namespace WinuXGames.SplitFramework.UI.Interfaces
             if (root != null) { RootUICanvas = root; }
             else
             {
-                if (GetType() == typeof(UICanvasInterface)) { RootUICanvas = (IUICanvas)this; }
+                if (GetType() == typeof(UICanvas)) { RootUICanvas = (IUICanvas)this; }
                 else
                 {
                     RootUICanvas = new UICanvasMock();
@@ -61,7 +62,7 @@ namespace WinuXGames.SplitFramework.UI.Interfaces
     }
 
 
-    public abstract class UIInterface<TStyle> : UIInterface, IUI<TStyle> where TStyle : SO_UIStyle
+    public abstract class UIBase<TStyle> : UIBase, IUI<TStyle> where TStyle : SO_UIStyle
     {
         [SerializeField] private TStyle _style;
 

@@ -2,7 +2,8 @@
     "name": "com.winuxgames.splitframework.ui.editor",
     "rootNamespace": "WinuXGames.SplitFramework.UI.Editor",
     "references": [
-        "GUID:47064ffe4ed35714a9df419986a3153a"
+        "GUID:47064ffe4ed35714a9df419986a3153a",
+        "GUID:c5c4bbe23c14a4b4abe84ef9b12d0db2"
     ],
     "includePlatforms": [
         "Editor"

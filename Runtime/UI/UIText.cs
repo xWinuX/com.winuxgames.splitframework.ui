@@ -1,10 +1,11 @@
 using TMPro;
 using UnityEngine;
+using WinuXGames.SplitFramework.UI.Interfaces;
 using WinuXGames.SplitFramework.UI.ScriptableObjects;
 
-namespace WinuXGames.SplitFramework.UI.Interfaces
+namespace WinuXGames.SplitFramework.UI.UI
 {
-    public class UITextInterface : UIInterface<SO_UIStyleText>, IUIText
+    public class UIText : UIBase<SO_UIStyleText>, IUIText
     {
         [SerializeField] private TMP_Text _text;
 

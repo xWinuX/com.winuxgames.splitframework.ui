@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using WinuXGames.SplitFramework.UI.Interfaces;
 
 namespace WinuXGames.SplitFramework.UI.ScriptableObjects
 {
