@@ -5,7 +5,7 @@ using WinuXGames.SplitFramework.UI.Interfaces;
 namespace WinuXGames.SplitFramework.UI.ScriptableObjects.Styles
 {
     [CreateAssetMenu(menuName = "Split Framework/UI/Styles/Canvas", fileName = "UIStyleCanvas", order = 0)]
-    public class SO_UIStyleCanvas : SO_UIStyle
+    public class SO_UIStyleCanvas : SO_UIStyle<IUICanvas>
     {
         [SerializeField] private Vector2Int _referenceResolution;
 
@@ -16,7 +16,7 @@ namespace WinuXGames.SplitFramework.UI.ScriptableObjects.Styles
         public int        ReferencePixelPerUnit => _referencePixelPerUnit;
         public Vector2Int ReferenceResolution   => _referenceResolution;
 
-        public void Apply(IUICanvas canvas)
+        public override void Apply(IUICanvas canvas)
         {
             canvas.Canvas.renderMode                   = _renderMode;
             canvas.Canvas.additionalShaderChannels     = AdditionalCanvasShaderChannels.TexCoord1;

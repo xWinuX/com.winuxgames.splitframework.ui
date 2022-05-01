@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using WinuXGames.SplitFramework.UI.Interfaces;
 
-namespace WinuXGames.SplitFramework.UI.ScriptableObjects.SelectionBehaviours
+namespace WinuXGames.SplitFramework.UI.ScriptableObjects.SelectBehaviour
 {
     [CreateAssetMenu(menuName = "Split Framework/UI/SelectBehaviours/Text/Color", fileName = "UITextColorSelectionBehaviour", order = 0)]
-    public class SO_UITextColorSelectionBehaviour : SO_UITextSelectionBehaviour
+    public class UITextColorSelectBehaviour : UITextSelectBehaviour
     {
-        [SerializeField] private Color _color;
+        [SerializeField] private Color _color = Color.white;
 
         public override void OnSelect(IUIText element) { element.Text.color = _color; }
 

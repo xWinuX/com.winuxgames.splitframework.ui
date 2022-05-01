@@ -2,7 +2,7 @@
 using UnityEngine;
 using WinuXGames.SplitFramework.UI.UI.Core;
 
-namespace WinuXGames.SplitFramework.UI.UI
+namespace WinuXGames.SplitFramework.UI.UI.Selectables
 {
     public class UISelector : UISelectorBase
     {

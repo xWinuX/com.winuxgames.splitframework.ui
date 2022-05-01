@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using WinuXGames.SplitFramework.UI.Interfaces;
-using WinuXGames.SplitFramework.UI.ScriptableObjects;
 using WinuXGames.SplitFramework.UI.ScriptableObjects.Styles;
 using WinuXGames.SplitFramework.UI.UI.Core;
 

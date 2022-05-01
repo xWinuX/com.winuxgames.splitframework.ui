@@ -1,13 +1,19 @@
 using UnityEngine;
 using UnityEngine.UI;
+using WinuXGames.SplitFramework.UI.ScriptableObjects.Styles;
 
 namespace WinuXGames.SplitFramework.UI.Interfaces
 {
-    public interface IUICanvas
+    public interface ICanvas
     {
         Canvas       Canvas                 { get; }
         CanvasScaler CanvasScaler           { get; }
         RenderMode   RenderMode             { get; }
-        float        ReferencePixelsPerUnit { get; }
+        float        ReferencePixelsPerUnit { get; } 
+    }
+    
+    public interface IUICanvas : IUI<SO_UIStyleCanvas>, ICanvas
+    {
+        
     }
 }

@@ -5,13 +5,13 @@ using WinuXGames.SplitFramework.UI.Interfaces;
 namespace WinuXGames.SplitFramework.UI.ScriptableObjects.Styles
 {
     [CreateAssetMenu(menuName = "Split Framework/UI/Styles/Button", fileName = "UIStyleButton", order = 1)]
-    public class SO_UIStyleButton : SO_UIStyle
+    public class SO_UIStyleButton : SO_UIStyle<IUIButton>
     {
         [SerializeField] private SO_UIStyleText _textStyle;
-        [SerializeField] private Sprite         _inactiveSprite;
-        [SerializeField] private Sprite         _activeSprite;
+        [SerializeField] private Sprite              _inactiveSprite;
+        [SerializeField] private Sprite              _activeSprite;
 
-        public void Apply(IUIButton button, IUIText text)
+        public override void Apply(IUIButton button)
         {
             button.Button.image.sprite = _inactiveSprite;
 
@@ -23,7 +23,7 @@ namespace WinuXGames.SplitFramework.UI.ScriptableObjects.Styles
             buttonSpriteState.selectedSprite    = _activeSprite;
             button.Button.spriteState           = buttonSpriteState;
 
-            text.SetStyle(_textStyle);
+            button.Text.SetStyle(_textStyle);
         }
     }
 }

@@ -5,6 +5,7 @@ namespace WinuXGames.SplitFramework.UI.Interfaces
 {
     public interface IUIButton : IUI<SO_UIStyleButton>
     {
-        Button Button { get; }
+        Button  Button { get; }
+        IUIText Text   { get; }
     }
 }

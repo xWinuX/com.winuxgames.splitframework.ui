@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using WinuXGames.SplitFramework.UI.Extensions;
 using WinuXGames.SplitFramework.UI.UI.Core;
+using WinuXGames.SplitFramework.UI.UI.Selectables;
 
 namespace WinuXGames.SplitFramework.UI.UI
 {

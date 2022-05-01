@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 using WinuXGames.SplitFramework.Core;
 using WinuXGames.SplitFramework.UI.Interfaces;
-using WinuXGames.SplitFramework.UI.ScriptableObjects;
 using WinuXGames.SplitFramework.UI.ScriptableObjects.Styles;
 using WinuXGames.SplitFramework.UI.UI.Core;
 
@@ -15,7 +14,8 @@ namespace WinuXGames.SplitFramework.UI.UI
         [SerializeField] private Navigation.Mode             _navigationMode;
         [SerializeField] private bool                        _navigationWrapAround = true;
 
-        public Button Button => _button;
+        public Button  Button => _button;
+        public IUIText Text   => _buttonText.Target;
 
         public void SetText(string text) { _buttonText.Target.SetText(text); }
 
@@ -32,7 +32,7 @@ namespace WinuXGames.SplitFramework.UI.UI
             _button.navigation          = buttonNavigation;
 
             // Apply style
-            Style.Apply(this, _buttonText.Target);
+            Style.Apply(this);
         }
     }
 }
