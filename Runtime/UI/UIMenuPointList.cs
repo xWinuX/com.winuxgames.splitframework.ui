@@ -1,68 +1,87 @@
-﻿using System.Collections.Generic;
-using DG.Tweening;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using WinuXGames.SplitFramework.Core.Providers;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using WinuXGames.SplitFramework.UI.Extensions;
+using WinuXGames.SplitFramework.UI.UI.Core;
 
 namespace WinuXGames.SplitFramework.UI.UI
 {
-    public class UIMenuPointList : MonoBehaviour
+    public class UIMenuPointList : UIBase
     {
-        [SerializeField] private SO_EventSystemProvider _eventSystemProvider;
+        [Header("Selector")]
+        [SerializeField] private UISelectorBase _menuSelectorPrefab;
+        [SerializeField] private Vector3 _selectorOffset = new Vector3(-10f, 0f, 0f);
 
-        [SerializeField] private GameObject _menuSelectorPrefab;
-        [SerializeField] private Vector3    _selectorOffset = new Vector3(-10f, 0f, 0f);
-
+        [Header("Selection")]
         [SerializeField] private List<UISelectable> _selectables = new List<UISelectable>();
+        [SerializeField] private UnityEvent<BaseEventData> _onMenuPointSelected;
 
+        [Header("State")]
         [SerializeField] private bool _active;
 
+        private          UISelectorBase _selector;
+        private          GameObject     _currentGameObject;
+        private          EventSystem    _eventSystem;
+        private readonly Vector3[]      _corners = new Vector3[4];
 
-        private GameObject _selector;
-        private GameObject _currentGameObject;
 
         private void Start()
         {
+            _eventSystem = EventSystem.current;
+
             if (_selectables.Count > 0 && _active)
             {
-                _eventSystemProvider.EventSystem.SetSelectedGameObject(_selectables[0].gameObject);
-                _eventSystemProvider.EventSystem.firstSelectedGameObject = _selectables[0].gameObject;
-                _currentGameObject                                       = _selectables[0].gameObject;
+                _eventSystem.SetSelectedGameObject(_selectables[0].gameObject);
+                _eventSystem.firstSelectedGameObject = _selectables[0].gameObject;
+                _currentGameObject                   = _selectables[0].gameObject;
             }
 
-            _selector                    = Instantiate(_menuSelectorPrefab, transform);
-            _selector.transform.position = GetPosition(_selectables[0].gameObject);
+            foreach (UISelectable uiSelectable in _selectables) { uiSelectable.OnSelectUnityEvent.AddListener(OnMenuPointSelected); }
+
+            _selector = InstantiateWithRootCanvas(_menuSelectorPrefab, transform);
+            StartCoroutine(SetInitialSelectorPositionCoroutine());
         }
 
         private void Update()
         {
-            GameObject newlySelectedGameObject = _eventSystemProvider.EventSystem.currentSelectedGameObject;
+            GameObject newlySelectedGameObject = _eventSystem.currentSelectedGameObject;
 
             if (newlySelectedGameObject == null) { return; }
 
             if (newlySelectedGameObject.Equals(_currentGameObject)) { return; }
 
-            MoveSelector(GetPosition(newlySelectedGameObject));
+            _selector.Move(GetPosition(newlySelectedGameObject));
             _currentGameObject = newlySelectedGameObject;
         }
 
-        private void MoveSelector(Vector3 position)
+        private void OnDrawGizmos()
         {
-            _selector.transform.DOKill();
-            _selector.transform.DOMove(position, 0.125f).SetEase(Ease.OutBack);
+            Matrix4x4 previousMatrix = Gizmos.matrix;
+            Gizmos.matrix = RootUICanvas.Canvas.GetCanvasMatrix();
+            foreach (UISelectable uiSelectable in _selectables) { Gizmos.DrawSphere(GetPosition(uiSelectable.gameObject), 1f); }
+
+            Gizmos.matrix = previousMatrix;
         }
 
-        private readonly Vector3[] _corners = new Vector3[4];
+        private void OnMenuPointSelected(BaseEventData data) { _onMenuPointSelected.Invoke(data); }
 
         private Vector3 GetPosition(GameObject go)
         {
-            RectTransform rectTransform = go.GetComponent<RectTransform>();
-            
+            RectTransform rectTransform = (RectTransform)go.transform;
+
             if (rectTransform == null) { return go.transform.position; }
 
             rectTransform.GetWorldCorners(_corners);
 
             return ((_corners[0] + _corners[1]) / 2) + _selectorOffset;
+        }
 
+        private IEnumerator SetInitialSelectorPositionCoroutine()
+        {
+            yield return null;
+            _selector.transform.position = GetPosition(_selectables[0].gameObject);
         }
     }
 }

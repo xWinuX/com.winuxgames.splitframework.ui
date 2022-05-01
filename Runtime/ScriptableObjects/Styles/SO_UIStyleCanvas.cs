@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using WinuXGames.SplitFramework.UI.Interfaces;
 
-namespace WinuXGames.SplitFramework.UI.ScriptableObjects
+namespace WinuXGames.SplitFramework.UI.ScriptableObjects.Styles
 {
     [CreateAssetMenu(menuName = "Split Framework/UI/Styles/Canvas", fileName = "UIStyleCanvas", order = 0)]
     public class SO_UIStyleCanvas : SO_UIStyle

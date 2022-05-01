@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using WinuXGames.SplitFramework.UI.Interfaces;
 using WinuXGames.SplitFramework.UI.ScriptableObjects;
+using WinuXGames.SplitFramework.UI.ScriptableObjects.Styles;
+using WinuXGames.SplitFramework.UI.UI.Core;
 
 namespace WinuXGames.SplitFramework.UI.UI
 {
@@ -15,14 +17,12 @@ namespace WinuXGames.SplitFramework.UI.UI
         public RenderMode   RenderMode             => Style.RenderMode;
         public float        ReferencePixelsPerUnit => Style.ReferencePixelPerUnit;
         
-
         public void UpdateAllChildren()
         {
             UIBase[] uiInterfaces = GetComponentsInChildren<UIBase>();
-            foreach (UIBase uiInterface in uiInterfaces) { uiInterface.AssignRootCanvasInterface(this); }
+            foreach (UIBase uiInterface in uiInterfaces) { uiInterface.AssignRootCanvas(this); }
         }
-
-
+        
         protected override void ApplyStyle()
         {
             base.ApplyStyle();

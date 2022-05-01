@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace WinuXGames.SplitFramework.UI.ScriptableObjects
+namespace WinuXGames.SplitFramework.UI.ScriptableObjects.Styles
 {
 
     [CreateAssetMenu(menuName = "Split Framework/UI/Styles/Panel", fileName = "UIStylePanel", order = 0)]

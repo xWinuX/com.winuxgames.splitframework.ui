@@ -1,5 +1,5 @@
 using UnityEngine.UI;
-using WinuXGames.SplitFramework.UI.ScriptableObjects;
+using WinuXGames.SplitFramework.UI.ScriptableObjects.Styles;
 
 namespace WinuXGames.SplitFramework.UI.Interfaces
 {

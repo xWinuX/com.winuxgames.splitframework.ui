@@ -55,7 +55,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _style: {fileID: 11400000, guid: 67c57e145cfb55f4fbabe1b73c705f61, type: 2}
   _button: {fileID: 8662229534606180161}
-  _buttonTextInterface: {fileID: 635099544875127790}
+  _buttonText:
+    _target: {fileID: 635099544875127790}
   _navigationMode: 0
   _navigationWrapAround: 1
 --- !u!222 &5753068597477804432

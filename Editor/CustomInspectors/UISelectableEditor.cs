@@ -1,6 +1,5 @@
 ﻿using UnityEditor;
 using UnityEditor.UI;
-using WinuXGames.SplitFramework.UI.Interfaces;
 using WinuXGames.SplitFramework.UI.UI;
 
 namespace WinuXGames.SplitFramework.UI.Editor.CustomInspectors
@@ -11,8 +10,10 @@ namespace WinuXGames.SplitFramework.UI.Editor.CustomInspectors
     {
         public override void OnInspectorGUI()
         {
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_uiDependency"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Navigation"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_onSelected"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_onSelectUnityEvent"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_onSubmitUnityEvent"));
 
             serializedObject.ApplyModifiedProperties();
         }

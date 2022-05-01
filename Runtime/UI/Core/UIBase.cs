@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using WinuXGames.SplitFramework.UI.Interfaces;
 using WinuXGames.SplitFramework.UI.ScriptableObjects;
+using WinuXGames.SplitFramework.UI.ScriptableObjects.Styles;
 
-namespace WinuXGames.SplitFramework.UI.UI
+namespace WinuXGames.SplitFramework.UI.UI.Core
 {
     [RequireComponent(typeof(RectTransform))]
     public abstract class UIBase : MonoBehaviour, IUI
@@ -10,17 +11,19 @@ namespace WinuXGames.SplitFramework.UI.UI
         public RectTransform RectTransform { get; private set; }
         public IUICanvas     RootUICanvas  { get; private set; } = new UICanvasMock();
 
-        protected virtual void Awake() { RectTransform = GetComponent<RectTransform>(); }
+        protected virtual void Awake()
+        {
+            RectTransform = GetComponent<RectTransform>();
+        }
 
         private void OnValidate()
         {
             GetRootCanvasInterface();
-
             ApplyStyle();
             OnStyleApply();
         }
 
-        public void AssignRootCanvasInterface(IUICanvas canvasInterface)
+        public void AssignRootCanvas(IUICanvas canvasInterface)
         {
             RootUICanvas = canvasInterface;
             ApplyStyle();
@@ -42,23 +45,29 @@ namespace WinuXGames.SplitFramework.UI.UI
             }
 
             if (root != null) { RootUICanvas = root; }
-            else
-            {
-                if (GetType() == typeof(UICanvas)) { RootUICanvas = (IUICanvas)this; }
-                else
-                {
-                    RootUICanvas = new UICanvasMock();
-                    Debug.LogWarning("UI elements root canvas has no interface, assigning mock...");
-                }
-            }
+            else { RootUICanvas              = new UICanvasMock(); }
         }
 
-        protected virtual void ApplyStyle()
-        {
-            if (RootUICanvas == null) { GetRootCanvasInterface(); }
-        }
+        protected virtual void ApplyStyle() { }
 
         protected virtual void OnStyleApply() { }
+
+        protected T InstantiateWithRootCanvas<T>(T prefab) where T : UIBase => Instantiate(prefab, RootUICanvas);
+        protected T InstantiateWithRootCanvas<T>(T prefab, Transform parent) where T : UIBase => Instantiate(prefab, parent, RootUICanvas);
+
+        public static T Instantiate<T>(T prefab, IUICanvas rootCanvas) where T : UIBase
+        {
+            T obj = Instantiate(prefab);
+            obj.AssignRootCanvas(rootCanvas);
+            return obj;
+        }
+        
+        public static T Instantiate<T>(T prefab, Transform parent, IUICanvas rootCanvas) where T : UIBase
+        {
+            T obj = Instantiate(prefab, parent);
+            obj.AssignRootCanvas(rootCanvas);
+            return obj;
+        }
     }
 
 

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using WinuXGames.SplitFramework.UI.Interfaces;
 
-namespace WinuXGames.SplitFramework.UI.ScriptableObjects
+namespace WinuXGames.SplitFramework.UI.ScriptableObjects.Styles
 {
     [CreateAssetMenu(menuName = "Split Framework/UI/Styles/Button", fileName = "UIStyleButton", order = 1)]
     public class SO_UIStyleButton : SO_UIStyle
