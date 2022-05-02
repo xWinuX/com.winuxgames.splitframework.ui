@@ -1,11 +1,11 @@
 ﻿using TMPro;
 using UnityEngine;
-using WinuXGames.SplitFramework.UI.Interfaces;
+using WinuXGames.SplitFramework.UI.UI.Elements;
 
 namespace WinuXGames.SplitFramework.UI.ScriptableObjects.Styles
 {
     [CreateAssetMenu(menuName = "Split Framework/UI/Styles/Text", fileName = "UIStyleText", order = 0)]
-    public class SO_UIStyleText : SO_UIStyle<IUIText>
+    public class SO_UIStyleText : SO_UIStyle<UIText>
     {
         [SerializeField] private TMP_FontAsset _font;
         [SerializeField] private Color         _color = Color.white;
@@ -15,7 +15,7 @@ namespace WinuXGames.SplitFramework.UI.ScriptableObjects.Styles
         public Color         Color => _color;
         public float         Size  => _size;
 
-        public override void Apply(IUIText text)
+        public override void Apply(UIText text)
         {
             text.Text.font     = _font;
             text.Text.fontSize = text.RootUICanvas.RenderMode == RenderMode.WorldSpace ? _size / text.RootUICanvas.ReferencePixelsPerUnit : _size;

@@ -1,17 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
-using WinuXGames.SplitFramework.UI.Interfaces;
+using WinuXGames.SplitFramework.UI.UI.Elements;
 
 namespace WinuXGames.SplitFramework.UI.ScriptableObjects.Styles
 {
     [CreateAssetMenu(menuName = "Split Framework/UI/Styles/Button", fileName = "UIStyleButton", order = 1)]
-    public class SO_UIStyleButton : SO_UIStyle<IUIButton>
+    public class SO_UIStyleButton : SO_UIStyle<UIButton>
     {
         [SerializeField] private SO_UIStyleText _textStyle;
         [SerializeField] private Sprite              _inactiveSprite;
         [SerializeField] private Sprite              _activeSprite;
 
-        public override void Apply(IUIButton button)
+        public override void Apply(UIButton button)
         {
             button.Button.image.sprite = _inactiveSprite;
 

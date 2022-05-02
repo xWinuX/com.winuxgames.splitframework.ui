@@ -7,7 +7,7 @@ using WinuXGames.SplitFramework.UI.Extensions;
 using WinuXGames.SplitFramework.UI.UI.Core;
 using WinuXGames.SplitFramework.UI.UI.Selectables;
 
-namespace WinuXGames.SplitFramework.UI.UI
+namespace WinuXGames.SplitFramework.UI.UI.Elements
 {
     public class UIMenuPointList : UIBase
     {
@@ -16,7 +16,8 @@ namespace WinuXGames.SplitFramework.UI.UI
         [SerializeField] private Vector3 _selectorOffset = new Vector3(-10f, 0f, 0f);
 
         [Header("Selection")]
-        [SerializeField] private List<UISelectable> _selectables = new List<UISelectable>();
+        [SerializeField] private bool _hasSelector;
+        [SerializeField] private List<UISelectable>        _selectables = new List<UISelectable>();
         [SerializeField] private UnityEvent<BaseEventData> _onMenuPointSelected;
 
         [Header("State")]
@@ -26,7 +27,6 @@ namespace WinuXGames.SplitFramework.UI.UI
         private          GameObject     _currentGameObject;
         private          EventSystem    _eventSystem;
         private readonly Vector3[]      _corners = new Vector3[4];
-
 
         private void Start()
         {
@@ -41,8 +41,11 @@ namespace WinuXGames.SplitFramework.UI.UI
 
             foreach (UISelectable uiSelectable in _selectables) { uiSelectable.OnSelectUnityEvent.AddListener(OnMenuPointSelected); }
 
-            _selector = InstantiateWithRootCanvas(_menuSelectorPrefab, transform);
-            StartCoroutine(SetInitialSelectorPositionCoroutine());
+            if (_hasSelector)
+            {
+                _selector = InstantiateWithRootCanvas(_menuSelectorPrefab, transform);
+                StartCoroutine(SetInitialSelectorPositionCoroutine());
+            }
         }
 
         private void Update()
@@ -53,7 +56,8 @@ namespace WinuXGames.SplitFramework.UI.UI
 
             if (newlySelectedGameObject.Equals(_currentGameObject)) { return; }
 
-            _selector.Move(GetPosition(newlySelectedGameObject));
+            if (_hasSelector) { _selector.Move(GetPosition(newlySelectedGameObject)); }
+
             _currentGameObject = newlySelectedGameObject;
         }
 

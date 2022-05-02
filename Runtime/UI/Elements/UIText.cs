@@ -4,9 +4,9 @@ using WinuXGames.SplitFramework.UI.Interfaces;
 using WinuXGames.SplitFramework.UI.ScriptableObjects.Styles;
 using WinuXGames.SplitFramework.UI.UI.Core;
 
-namespace WinuXGames.SplitFramework.UI.UI
+namespace WinuXGames.SplitFramework.UI.UI.Elements
 {
-    public class UIText : UIBase<SO_UIStyleText>, IUIText
+    public class UIText : UIBase<SO_UIStyleText>
     {
         [SerializeField] private TMP_Text _text;
 

@@ -63,7 +63,7 @@ namespace WinuXGames.SplitFramework.UI.UI.Core
         }
     }
 
-    public abstract class UIBase<TStyle> : UIBase, IUI<TStyle> where TStyle : SO_UIStyle
+    public abstract class UIBase<TStyle> : UIBase where TStyle : SO_UIStyle
     {
         [SerializeField] private TStyle             _style;
         

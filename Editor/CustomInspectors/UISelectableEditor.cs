@@ -1,11 +1,9 @@
 ﻿using UnityEditor;
 using UnityEditor.UI;
-using WinuXGames.SplitFramework.UI.UI.Selectables;
+using WinuXGames.SplitFramework.UI.UI.Core;
 
 namespace WinuXGames.SplitFramework.UI.Editor.CustomInspectors
 {
-
-    
     [CanEditMultipleObjects]
     [CustomEditor(typeof(UISelectable), true)]
     public class UISelectableEditor : SelectableEditor

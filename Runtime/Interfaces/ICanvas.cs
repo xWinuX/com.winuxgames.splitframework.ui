@@ -11,9 +11,4 @@ namespace WinuXGames.SplitFramework.UI.Interfaces
         RenderMode   RenderMode             { get; }
         float        ReferencePixelsPerUnit { get; } 
     }
-    
-    public interface IUICanvas : IUI<SO_UIStyleCanvas>, ICanvas
-    {
-        
-    }
 }

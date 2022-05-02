@@ -4,9 +4,9 @@ using WinuXGames.SplitFramework.UI.Interfaces;
 using WinuXGames.SplitFramework.UI.ScriptableObjects.Styles;
 using WinuXGames.SplitFramework.UI.UI.Core;
 
-namespace WinuXGames.SplitFramework.UI.UI
+namespace WinuXGames.SplitFramework.UI.UI.Elements
 {
-    public class UICanvas : UIBase<SO_UIStyleCanvas>, IUICanvas
+    public class UICanvas : UIBase<SO_UIStyleCanvas>, ICanvas
     {
         [SerializeField] private Canvas       _canvas;
         [SerializeField] private CanvasScaler _canvasScaler;

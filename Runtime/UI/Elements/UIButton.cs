@@ -1,23 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using WinuXGames.SplitFramework.Core;
-using WinuXGames.SplitFramework.UI.Interfaces;
 using WinuXGames.SplitFramework.UI.ScriptableObjects.Styles;
 using WinuXGames.SplitFramework.UI.UI.Core;
 
-namespace WinuXGames.SplitFramework.UI.UI
+namespace WinuXGames.SplitFramework.UI.UI.Elements
 {
-    public class UIButton : UIBase<SO_UIStyleButton>, IUIButton
+    public class UIButton : UIBase<SO_UIStyleButton>
     {
-        [SerializeField] private Button                      _button;
-        [SerializeField] private InterfaceReference<IUIText> _buttonText;
-        [SerializeField] private Navigation.Mode             _navigationMode;
-        [SerializeField] private bool                        _navigationWrapAround = true;
+        [SerializeField] private Button          _button;
+        [SerializeField] private UIText          _buttonText;
+        [SerializeField] private Navigation.Mode _navigationMode;
+        [SerializeField] private bool            _navigationWrapAround = true;
 
-        public Button  Button => _button;
-        public IUIText Text   => _buttonText.Target;
+        public Button Button => _button;
+        public UIText Text   => _buttonText;
 
-        public void SetText(string text) { _buttonText.Target.SetText(text); }
+        public void SetText(string text) { _buttonText.SetText(text); }
 
         protected override void ApplyStyle()
         {

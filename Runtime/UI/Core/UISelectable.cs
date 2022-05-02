@@ -7,7 +7,7 @@ using WinuXGames.SplitFramework.Core.Providers;
 using WinuXGames.SplitFramework.UI.Interfaces;
 using WinuXGames.SplitFramework.UI.ScriptableObjects.SelectBehaviour;
 
-namespace WinuXGames.SplitFramework.UI.UI.Selectables
+namespace WinuXGames.SplitFramework.UI.UI.Core
 {
     public abstract class UISelectable : Selectable
     {
@@ -39,21 +39,21 @@ namespace WinuXGames.SplitFramework.UI.UI.Selectables
     }
 
     public class UISelectable<TUIElement, TSelectBehaviour> : UISelectable
-        where TUIElement : class, IUI
+        where TUIElement : UIBase
         where TSelectBehaviour : SO_UISelectBehaviour<TUIElement>
     {
-        [SerializeField] private TSelectBehaviour               _selectBehaviour;
-        [SerializeField] private InterfaceReference<TUIElement> _uiElement;
+        [SerializeField] private TSelectBehaviour _selectBehaviour;
+        [SerializeField] private TUIElement      _uiElement;
 
         public override void OnSelect(BaseEventData eventData)
         {
-            _selectBehaviour.OnSelect(_uiElement.Target);
+            _selectBehaviour.OnSelect(_uiElement);
             base.OnSelect(eventData);
         }
 
         public override void OnDeselect(BaseEventData eventData)
         {
-            _selectBehaviour.OnDeselect(_uiElement.Target);
+            _selectBehaviour.OnDeselect(_uiElement);
             base.OnDeselect(eventData);
         }
     }
