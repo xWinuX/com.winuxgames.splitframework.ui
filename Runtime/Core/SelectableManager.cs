@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using WinuXGames.SplitFramework.Core;
+using WinuXGames.SplitFramework.Utility;
 using WinuXGames.SplitFramework.UI.Elements;
 using WinuXGames.SplitFramework.UI.Providers;
 using WinuXGames.SplitFramework.UI.Selectables.Core;
