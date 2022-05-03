@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using UnityEngine;
 using System.Linq;
-using UnityEngine;
-using WinuXGames.SplitFramework.Core;
+using System.Collections.Generic;
 using WinuXGames.SplitFramework.Utility;
 using WinuXGames.SplitFramework.UI.Elements;
 using WinuXGames.SplitFramework.UI.Providers;
@@ -102,7 +101,7 @@ namespace WinuXGames.SplitFramework.UI.Core
 
         private static void ClearHistoryEntry(SelectorHistoryEntry selectorHistoryEntry) { selectorHistoryEntry.Selector.Close(); }
 
-        private static UISelectorBase CreateAndInitializeSelector(ITransform container, UISelectorBase selectorPrefab = null)
+        private static UISelectorBase CreateAndInitializeSelector(ISelectablesContainer container, UISelectorBase selectorPrefab = null)
         {
             UISelectorBase selector = selectorPrefab == null ? null : Instantiate(selectorPrefab, container.transform);
             return selector;

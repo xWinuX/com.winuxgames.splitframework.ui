@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using WinuXGames.SplitFramework.UI.Core;
 using WinuXGames.SplitFramework.UI.Elements.Core;
 using WinuXGames.SplitFramework.UI.Elements.Styles;
 
