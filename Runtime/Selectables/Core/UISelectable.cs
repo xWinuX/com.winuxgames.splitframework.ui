@@ -31,7 +31,11 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
 
         private void Update()
         {
-            if (_isSelected && _uiDependency.InputModule.submit.action.WasPerformedThisFrame()) { _onSubmitUnityEvent.Invoke(); }
+            if (
+                _isSelected &&
+                _uiDependency.InputModule.submit.action.WasPerformedThisFrame() &&
+                !_uiDependency.SelectableManager.Blocked
+            ) { _onSubmitUnityEvent.Invoke(); }
         }
 
         protected override void OnValidate()
@@ -50,7 +54,7 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
         {
             Matrix4x4 previousMatrix = Gizmos.matrix;
             Gizmos.matrix = RootUICanvas.Canvas.GetCanvasMatrix();
-            Gizmos.color = Color.red;
+            Gizmos.color  = Color.red;
             Gizmos.DrawSphere(GetSelectorPosition(), 1f);
             Gizmos.color  = Color.white;
             Gizmos.matrix = previousMatrix;

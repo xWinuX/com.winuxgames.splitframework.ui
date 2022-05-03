@@ -1,5 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 using WinuXGames.SplitFramework.UI.Core;
+using WinuXGames.SplitFramework.UI.Elements.Core;
+using WinuXGames.SplitFramework.UI.Selectables.Core;
 
 namespace WinuXGames.SplitFramework.UI.Utility
 {
@@ -26,6 +31,38 @@ namespace WinuXGames.SplitFramework.UI.Utility
             }
 
             return root;
+        }
+
+        /// <summary>
+        /// Configures given navigation mode for given selectables
+        /// </summary>
+        /// <param name="selectables">Selectables to configure</param>
+        /// <param name="navigationMode">Navigation mode to configure for</param>
+        /// <exception cref="ArgumentOutOfRangeException">Invalid NavigationMode Enum was passed</exception>
+        public static void ConfigureNavigation(List<UISelectable> selectables, NavigationMode navigationMode)
+        {
+            for (int i = 0; i < selectables.Count; i++)
+            {
+                Selectable selectable = selectables[i];
+
+                Navigation navigation = selectable.navigation;
+                navigation.mode = Navigation.Mode.Explicit;
+
+                switch (navigationMode)
+                {
+                    case NavigationMode.Horizontal:
+                        navigation.selectOnLeft  = i == 0 ? selectables[^1] : selectables[i - 1];
+                        navigation.selectOnRight = i == selectables.Count - 1 ? selectables[0] : selectables[i + 1];
+                        break;
+                    case NavigationMode.Vertical:
+                        navigation.selectOnUp   = i == 0 ? selectables[^1] : selectables[i - 1];
+                        navigation.selectOnDown = i == selectables.Count - 1 ? selectables[0] : selectables[i + 1];
+                        break;
+                    default: throw new ArgumentOutOfRangeException(nameof(navigationMode), navigationMode, null);
+                }
+
+                selectable.navigation = navigation;
+            }
         }
     }
 }

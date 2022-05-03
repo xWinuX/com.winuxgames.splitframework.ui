@@ -1,10 +1,9 @@
 ﻿using UnityEditor;
 using UnityEditor.UI;
 using UnityEngine;
-using WinuXGames.SplitFramework.UI.Selectables;
 using WinuXGames.SplitFramework.UI.Selectables.Core;
 
-namespace WinuXGames.SplitFramework.UI.Editor
+namespace WinuXGames.SplitFramework.UI.Editor.Selectables
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(UISelectable), true)]
@@ -28,20 +27,6 @@ namespace WinuXGames.SplitFramework.UI.Editor
             EditorGUILayout.Separator();
 
             serializedObject.ApplyModifiedProperties();
-        }
-    }
-
-    [CanEditMultipleObjects]
-    [CustomEditor(typeof(UISelectableText), true)]
-    public class UISelectableTextEditor : UISelectableEditor
-    {
-        public override void OnInspectorGUI()
-        {
-            GUILayout.Label("Selector Settings", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_selectorOffset"));
-            EditorGUILayout.Separator();
-            
-            base.OnInspectorGUI();
         }
     }
 }

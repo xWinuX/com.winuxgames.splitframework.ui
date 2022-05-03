@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using WinuXGames.SplitFramework.Core;
 using WinuXGames.SplitFramework.UI.Selectables.Core;
 
 namespace WinuXGames.SplitFramework.UI.Elements
 {
-    public interface ISelectableContainer
+    public interface ISelectablesContainer : ITransform
     {
         List<UISelectable> Selectables { get; }
     }

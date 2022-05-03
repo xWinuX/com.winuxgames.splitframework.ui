@@ -3,20 +3,30 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using WinuXGames.SplitFramework.UI.Elements.Core;
-using WinuXGames.SplitFramework.UI.Extensions;
 using WinuXGames.SplitFramework.UI.Selectables.Core;
+using WinuXGames.SplitFramework.UI.Utility;
 
 namespace WinuXGames.SplitFramework.UI.Elements
 {
-    public class UIMenuPointList : UIBase
+    public class UIMenuPointList : UIBase, ISelectablesContainer
     {
-        [SerializeField] private bool                      _active;
-        [SerializeField] private List<UISelectable>        _selectables = new List<UISelectable>();
+        [SerializeField] private bool               _active;
+        [SerializeField] private List<UISelectable> _selectables = new List<UISelectable>();
+        [SerializeField] private NavigationMode     _navigationMode;
+
         [SerializeField] private UnityEvent<BaseEventData> _onMenuPointSelected;
+
+        public List<UISelectable> Selectables => _selectables;
 
         private UISelectorBase _selector;
         private GameObject     _currentGameObject;
         private EventSystem    _eventSystem;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            UIUtility.ConfigureNavigation(_selectables, _navigationMode);
+        }
 
         private void Start()
         {
@@ -41,15 +51,6 @@ namespace WinuXGames.SplitFramework.UI.Elements
             if (newlySelectedGameObject.Equals(_currentGameObject)) { return; }
 
             _currentGameObject = newlySelectedGameObject;
-        }
-
-        private void OnDrawGizmos()
-        {
-            Matrix4x4 previousMatrix = Gizmos.matrix;
-            Gizmos.matrix = RootUICanvas.Canvas.GetCanvasMatrix();
-
-
-            Gizmos.matrix = previousMatrix;
         }
 
         private void OnMenuPointSelected(BaseEventData data) { _onMenuPointSelected.Invoke(data); }
