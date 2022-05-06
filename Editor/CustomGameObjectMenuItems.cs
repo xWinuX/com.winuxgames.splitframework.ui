@@ -5,16 +5,43 @@ namespace WinuXGames.SplitFramework.UI.Editor
 {
     public static class CustomGameObjectMenuItems
     {
-        [MenuItem("GameObject/Split Framework/UI/Canvas", priority = 0)]
-        private static void CreateUICanvas() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/Canvas");
+        [MenuItem("GameObject/Split Framework/UI/Manager", priority = 0)]
+        private static void CreateUIManager() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/MAN_UI");
         
-        [MenuItem("GameObject/Split Framework/UI/Text", priority = 1)]
-        private static void CreateUIText() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/Text");
         
-        [MenuItem("GameObject/Split Framework/UI/Button", priority = 2)]
-        private static void CreateUIButton() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/Button");
+        [MenuItem("GameObject/Split Framework/UI/Canvas/Default", priority = 1)]
+        private static void CreateUICanvasDefault() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/Canvas/CanvasDefault");
+
+
+        [MenuItem("GameObject/Split Framework/UI/Canvas/Default WorldSpace", priority = 1)]
+        private static void CreateUICanvasDefaultWorldSpace() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/Canvas/CanvasDefaultWorldSpace");
         
-        [MenuItem("GameObject/Split Framework/UI/MenuPointList", priority = 3)]
-        private static void CreateUIMenuPointList() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/MenuPointList");
+        
+        [MenuItem("GameObject/Split Framework/UI/Panel/Default Big", priority = 2)]
+        private static void CreateUIPanelDefaultBig() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/Panel/PanelDefaultBig");
+        
+        
+        [MenuItem("GameObject/Split Framework/UI/Panel/Default Small", priority = 2)]
+        private static void CreateUIPanelDefaultSmall() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/Panel/PanelDefaultSmall");
+        
+        
+        [MenuItem("GameObject/Split Framework/UI/Text/Default Big", priority = 3)]
+        private static void CreateUITextDefaultBig() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/Text/TextDefaultBig");
+
+
+        [MenuItem("GameObject/Split Framework/UI/Text/Default Small", priority = 3)]
+        private static void CreateUITextDefaultSmall() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/Text/TextDefaultSmall");
+
+
+        [MenuItem("GameObject/Split Framework/UI/Button/Default Big", priority = 4)]
+        private static void CreateUIButtonDefaultBig() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/Button/ButtonDefaultBig");
+
+
+        [MenuItem("GameObject/Split Framework/UI/Button/Default Small", priority = 4)]
+        private static void CreateUIButtonDefaultSmall() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/Button/ButtonDefaultSmall");
+
+
+        [MenuItem("GameObject/Split Framework/UI/MenuPointList/Default", priority = 5)]
+        private static void CreateUIMenuPointList() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/MenuPointList/MenuPointListDefault");
     }
 }

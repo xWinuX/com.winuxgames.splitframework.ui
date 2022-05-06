@@ -9,8 +9,16 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
         where TUIElement : UIBase
         where TSelectBehaviour : SO_UISelectBehaviour<TUIElement>
     {
-        [SerializeField] private TSelectBehaviour _selectBehaviour;
+        [SerializeField] private TSelectBehaviour _selectBehaviourSO;
         [SerializeField] private TUIElement       _uiElement;
+
+        private ISelectBehaviour<TUIElement> _selectBehaviour;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            _selectBehaviour = _selectBehaviourSO == null ? new SelectBehaviourMock<TUIElement>() : _selectBehaviourSO;
+        }
 
         public override void OnSelect(BaseEventData eventData)
         {

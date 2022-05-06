@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1804608834839111444}
   - component: {fileID: 8662229534606180161}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BaseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,8 +38,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38.9283, y: -6.7555}
-  m_SizeDelta: {x: 80, y: 19.4}
+  m_AnchoredPosition: {x: 55.2606, y: -23.2495}
+  m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5098083491170844007
 MonoBehaviour:
@@ -53,10 +53,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b35c87631fa2b4aa37895c5c8d80eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _style: {fileID: 11400000, guid: 67c57e145cfb55f4fbabe1b73c705f61, type: 2}
+  _style: {fileID: 11400000, guid: d8d15478c93ea134db6d1d7dacaf80f5, type: 2}
   _button: {fileID: 8662229534606180161}
-  _buttonText:
-    _target: {fileID: 635099544875127790}
+  _buttonText: {fileID: 635099544875127790}
   _navigationMode: 0
   _navigationWrapAround: 1
 --- !u!222 &5753068597477804432
@@ -116,7 +115,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -190,7 +189,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _style
       value: 
-      objectReference: {fileID: 11400000, guid: 19279e835be8d6f4c96165e482c2915a,
+      objectReference: {fileID: 11400000, guid: 1bc0528baa880754682b9ee5f807e814,
         type: 2}
     - target: {fileID: 949698810593968911, guid: 6c0a0941cf05dfe4f8ee7e310bd5a012,
         type: 3}
