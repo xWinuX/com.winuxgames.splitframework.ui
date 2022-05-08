@@ -33,6 +33,12 @@ namespace WinuXGames.SplitFramework.UI.Utility
             return root;
         }
 
+        public static ICanvas GetRootCanvasOrDefault(GameObject start)
+        {
+            ICanvas canvas = TryGetRootCanvas(start);
+            return canvas ?? new UICanvasMock();
+        }
+
         /// <summary>
         /// Configures given navigation mode for given selectables
         /// </summary>

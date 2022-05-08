@@ -16,6 +16,7 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
         [SerializeField] private UnityEvent<BaseEventData> _onSelectUnityEvent;
         [SerializeField] private UnityEvent                _onSubmitUnityEvent;
 
+        public UnityEvent                OnSubmitUnityEvent => _onSubmitUnityEvent;
         public UnityEvent<BaseEventData> OnSelectUnityEvent => _onSelectUnityEvent;
 
         public RectTransform RectTransform { get; protected set; }
@@ -26,7 +27,8 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
         protected override void Awake()
         {
             base.Awake();
-            RectTransform = GetComponent<RectTransform>();
+            RootUICanvas  ??= UIUtility.GetRootCanvasOrDefault(gameObject);
+            RectTransform =   GetComponent<RectTransform>();
         }
 
         private void Update()
@@ -44,21 +46,21 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
 
             RectTransform = GetComponent<RectTransform>();
 
-            ICanvas canvas = UIUtility.TryGetRootCanvas(gameObject);
-            if (canvas != null) { RootUICanvas = canvas; }
-
-            RootUICanvas ??= new UICanvasMock();
+            RootUICanvas = UIUtility.GetRootCanvasOrDefault(gameObject);
         }
 
-        private void OnDrawGizmos()
-        {
-            Matrix4x4 previousMatrix = Gizmos.matrix;
-            Gizmos.matrix = RootUICanvas.Canvas.GetCanvasMatrix();
-            Gizmos.color  = Color.red;
-            Gizmos.DrawSphere(GetSelectorPosition(), 1f);
-            Gizmos.color  = Color.white;
-            Gizmos.matrix = previousMatrix;
-        }
+        
+       private void OnDrawGizmos()
+       {
+           if (RootUICanvas == null || RootUICanvas.Canvas == null) { return; }
+
+           Matrix4x4 previousMatrix = Gizmos.matrix;
+           Gizmos.matrix = RootUICanvas.Canvas.GetCanvasMatrix();
+           Gizmos.color  = Color.red;
+           Gizmos.DrawSphere(GetSelectorPosition(), 1f);
+           Gizmos.color  = Color.white;
+           Gizmos.matrix = previousMatrix;
+       }
 
         public virtual Vector3 GetSelectorPosition() => RectTransform == null ? transform.position : RectTransform.position;
 

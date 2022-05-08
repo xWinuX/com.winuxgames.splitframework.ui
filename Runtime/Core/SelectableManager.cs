@@ -40,6 +40,14 @@ namespace WinuXGames.SplitFramework.UI.Core
             historyEntry.Selector.Move(uiSelectable.GetSelectorPosition());
         }
 
+        public void SetSelectableContainer(ISelectablesContainer container, UISelectorBase selectorPrefab = null)
+        {
+            if (container.Selectables.Count == 0) { return; }
+
+            ClearHistory();
+            AssignNewContainerAndPrefab(container, selectorPrefab);
+        }
+
         public void AddSelectableContainer(ISelectablesContainer container, UISelectorBase selectorPrefab = null)
         {
             if (container.Selectables.Count == 0) { return; }
@@ -51,8 +59,12 @@ namespace WinuXGames.SplitFramework.UI.Core
         {
             ClearHistoryEntry(_history.Pop());
 
-            if (_history.Count == 0) { return; }
-
+            if (_history.Count == 0)
+            {
+                _uiDependency.EventSystem.SetSelectedGameObject(null);
+                return;
+            }
+            
             SelectorHistoryEntry selectorHistoryEntry = _history.Peek();
             selectorHistoryEntry.Selector.Enter();
             BlockForOneFrame();
@@ -65,8 +77,9 @@ namespace WinuXGames.SplitFramework.UI.Core
             {
                 SelectorHistoryEntry selectorHistoryEntry = _history.Peek();
                 selectorHistoryEntry.Selector.Leave();
-                BlockForOneFrame();
             }
+
+            BlockForOneFrame();
 
             GameObject currentlySelected = container.Selectables[0].gameObject;
             _history.Push(new SelectorHistoryEntry(container, CreateAndInitializeSelector(container, selectorPrefab), currentlySelected));
@@ -88,15 +101,6 @@ namespace WinuXGames.SplitFramework.UI.Core
             }
 
             _history.Clear();
-        }
-
-        private void SetSelectableContainer(ISelectablesContainer container, UISelectorBase selectorPrefab = null)
-        {
-            if (container.Selectables.Count == 0) { return; }
-
-            ClearHistory();
-
-            AssignNewContainerAndPrefab(container, selectorPrefab);
         }
 
         private static void ClearHistoryEntry(SelectorHistoryEntry selectorHistoryEntry) { selectorHistoryEntry.Selector.Close(); }

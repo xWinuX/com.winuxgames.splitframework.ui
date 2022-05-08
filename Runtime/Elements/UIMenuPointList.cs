@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using WinuXGames.SplitFramework.UI.Elements.Core;
+using WinuXGames.SplitFramework.UI.Selectables;
 using WinuXGames.SplitFramework.UI.Selectables.Core;
 using WinuXGames.SplitFramework.UI.Utility;
 
@@ -15,15 +16,16 @@ namespace WinuXGames.SplitFramework.UI.Elements
 
         [SerializeField] private UnityEvent<BaseEventData> _onMenuPointSelected;
 
-        public List<UISelectable> Selectables => _selectables;
+        public List<ISelectable> Selectables { get; private set; }
 
-        private UISelectorBase _selector;
-        private GameObject     _currentGameObject;
+        private UISelectorBase   _selector;
+        private  GameObject       _currentGameObject;
 
         protected override void Awake()
         {
             base.Awake();
             UIUtility.ConfigureNavigation(_selectables, _navigationMode);
+            Selectables = _selectables.ConvertAll(input => input as ISelectable);
         }
 
         private void Start()

@@ -21,7 +21,7 @@ namespace WinuXGames.SplitFramework.UI.Editor.Selectables
             EditorGUILayout.Separator();
             
             GUILayout.Label("Selection", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_selectBehaviour"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_selectBehaviourSO"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_onSelectUnityEvent"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_onSubmitUnityEvent"));
             EditorGUILayout.Separator();

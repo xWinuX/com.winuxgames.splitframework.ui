@@ -12,6 +12,8 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
         [SerializeField] private TSelectBehaviour _selectBehaviourSO;
         [SerializeField] private TUIElement       _uiElement;
 
+        protected TUIElement UIElement => _uiElement;
+        
         private ISelectBehaviour<TUIElement> _selectBehaviour;
 
         protected override void Awake()
