@@ -11,7 +11,8 @@ namespace WinuXGames.SplitFramework.UI.Selectables
         [SerializeField] private Vector3 _selectorOffset = Vector3.zero;
         
         private readonly Vector3[] _corners = new Vector3[4];
-
+        
+        
         public override Vector3 GetSelectorPosition()
         {
             if (RectTransform == null) { return transform.position; }

@@ -18,7 +18,7 @@ namespace WinuXGames.SplitFramework.UI.Core
         private readonly Stack<SelectorHistoryEntry> _history = new Stack<SelectorHistoryEntry>();
         private          bool                        _ready;
 
-        private void Start()
+        private void Awake()
         {
             if (SelectablesContainer != null) { SetSelectableContainer(SelectablesContainer, _defaultSelector); }
 
@@ -37,6 +37,7 @@ namespace WinuXGames.SplitFramework.UI.Core
 
             historyEntry.CurrentlySelected = newlySelectedGameObject;
             UISelectable uiSelectable = historyEntry.CurrentlySelected.GetComponent<UISelectable>();
+            
             historyEntry.Selector.Move(uiSelectable.GetSelectorPosition());
         }
 
@@ -108,6 +109,12 @@ namespace WinuXGames.SplitFramework.UI.Core
         private static UISelectorBase CreateAndInitializeSelector(ISelectablesContainer container, UISelectorBase selectorPrefab = null)
         {
             UISelectorBase selector = selectorPrefab == null ? null : Instantiate(selectorPrefab, container.transform);
+            
+            if (selector == null) { return selector; }
+            
+            Canvas.ForceUpdateCanvases();
+            selector.transform.position = container.Selectables[0].GetSelectorPosition();
+
             return selector;
         }
     }

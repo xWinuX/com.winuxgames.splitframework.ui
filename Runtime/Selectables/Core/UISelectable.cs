@@ -31,7 +31,7 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
             RectTransform =   GetComponent<RectTransform>();
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             if (
                 _isSelected &&

@@ -18,7 +18,7 @@ namespace WinuXGames.SplitFramework.UI.Selectables
             _moveTween = transform.DOMove(position, 0.125f).SetEase(Ease.OutBack);
         }
 
-        protected override    void OnEnter() { transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutElastic); }
+        protected override void OnEnter() { transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutElastic); }
         protected override void OnLeave() { transform.DOScale(Vector3.one * 0.25f, 1f).SetEase(Ease.OutElastic); }
         protected override void OnClose() { Destroy(gameObject); }
     }
