@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using WinuXGames.SplitFramework.UI.Elements;
 
-namespace WinuXGames.SplitFramework.UI.Selectables.SelectBehaviours
+namespace WinuXGames.SplitFramework.UI.Selectables.SelectBehaviours.Text
 {
     [CreateAssetMenu(menuName = "Split Framework/UI/SelectBehaviours/Text/Color", fileName = "UITextColorSelectionBehaviour", order = 0)]
     public class SO_UITextColorSelectBehaviour : SO_UITextSelectBehaviour

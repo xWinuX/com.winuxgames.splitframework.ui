@@ -1,6 +1,6 @@
 ﻿using WinuXGames.SplitFramework.UI.Elements.Core;
 
-namespace WinuXGames.SplitFramework.UI.Selectables.Core
+namespace WinuXGames.SplitFramework.UI.Selectables.SelectBehaviours.Core
 {
     public interface ISelectBehaviour<in T> where T : UIBase
     {

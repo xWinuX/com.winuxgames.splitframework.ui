@@ -1,8 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
-using WinuXGames.SplitFramework.UI.Selectables.Core;
 
-namespace WinuXGames.SplitFramework.UI.Selectables
+namespace WinuXGames.SplitFramework.UI.Selectables.Core
 {
     public class UISelector : UISelectorBase
     {

@@ -52,6 +52,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 6066e9e1b937f46488f2d265c7d4483c,
         type: 2}
+    - target: {fileID: 5950815076354015721, guid: 0ad92ba0468c90148b1f81d75a70a964,
+        type: 3}
+      propertyPath: _uiDependency
+      value: 
+      objectReference: {fileID: 11400000, guid: 50fe33bb0cc794b49b35d21630703da1,
+        type: 2}
+    - target: {fileID: 5950815076354015721, guid: 0ad92ba0468c90148b1f81d75a70a964,
+        type: 3}
+      propertyPath: _selectBehaviourSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c4a2be126cdf304da04e9ca84bd1635,
+        type: 2}
     - target: {fileID: 7998356932298919599, guid: 0ad92ba0468c90148b1f81d75a70a964,
         type: 3}
       propertyPath: m_Pivot.x

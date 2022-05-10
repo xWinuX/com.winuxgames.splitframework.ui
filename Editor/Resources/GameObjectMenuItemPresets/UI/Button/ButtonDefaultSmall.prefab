@@ -38,7 +38,7 @@ PrefabInstance:
     - target: {fileID: 738499371908984460, guid: 0ad92ba0468c90148b1f81d75a70a964,
         type: 3}
       propertyPath: m_Name
-      value: ButtonSmall
+      value: ButtonDefaultSmall
       objectReference: {fileID: 0}
     - target: {fileID: 1804608834839111444, guid: 0ad92ba0468c90148b1f81d75a70a964,
         type: 3}
@@ -51,6 +51,18 @@ PrefabInstance:
       propertyPath: _style
       value: 
       objectReference: {fileID: 11400000, guid: 67c57e145cfb55f4fbabe1b73c705f61,
+        type: 2}
+    - target: {fileID: 5950815076354015721, guid: 0ad92ba0468c90148b1f81d75a70a964,
+        type: 3}
+      propertyPath: _uiDependency
+      value: 
+      objectReference: {fileID: 11400000, guid: 50fe33bb0cc794b49b35d21630703da1,
+        type: 2}
+    - target: {fileID: 5950815076354015721, guid: 0ad92ba0468c90148b1f81d75a70a964,
+        type: 3}
+      propertyPath: _selectBehaviourSO
+      value: 
+      objectReference: {fileID: 11400000, guid: dfae27b3edb1cb54eb34042e99237cf7,
         type: 2}
     - target: {fileID: 7998356932298919599, guid: 0ad92ba0468c90148b1f81d75a70a964,
         type: 3}

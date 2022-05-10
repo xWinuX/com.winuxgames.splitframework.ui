@@ -1,6 +1,6 @@
 ﻿using WinuXGames.SplitFramework.UI.Elements.Core;
 
-namespace WinuXGames.SplitFramework.UI.Selectables.Core
+namespace WinuXGames.SplitFramework.UI.Selectables.SelectBehaviours.Core
 {
     public class SelectBehaviourMock<T> : ISelectBehaviour<T> where T : UIBase
     {

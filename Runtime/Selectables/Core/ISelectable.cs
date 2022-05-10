@@ -1,7 +1,7 @@
 using UnityEngine;
 using WinuXGames.SplitFramework.Core;
 
-namespace WinuXGames.SplitFramework.UI.Selectables
+namespace WinuXGames.SplitFramework.UI.Selectables.Core
 {
     public interface ISelectable : IGameObject
     {

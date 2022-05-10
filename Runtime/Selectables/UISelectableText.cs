@@ -2,7 +2,7 @@
 using WinuXGames.SplitFramework.UI.Elements;
 using WinuXGames.SplitFramework.UI.Extensions;
 using WinuXGames.SplitFramework.UI.Selectables.Core;
-using WinuXGames.SplitFramework.UI.Selectables.SelectBehaviours;
+using WinuXGames.SplitFramework.UI.Selectables.SelectBehaviours.Text;
 
 namespace WinuXGames.SplitFramework.UI.Selectables
 {
