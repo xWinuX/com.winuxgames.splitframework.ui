@@ -63,11 +63,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3655c94b59db34e49aea7f9260bdf441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _providerToInitialize: {fileID: 11400000, guid: 50fe33bb0cc794b49b35d21630703da1,
+    type: 2}
   _eventSystem: {fileID: 436817136062698750}
   _inputModule: {fileID: 3496891981079396268}
   _selectableManager: {fileID: 7713132933917315554}
-  _uiDependencyProvider: {fileID: 11400000, guid: 50fe33bb0cc794b49b35d21630703da1,
-    type: 2}
 --- !u!114 &436817136062698750
 MonoBehaviour:
   m_ObjectHideFlags: 0
