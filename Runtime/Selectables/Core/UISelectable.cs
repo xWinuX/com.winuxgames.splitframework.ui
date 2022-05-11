@@ -40,6 +40,7 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
             ) { _onSubmitUnityEvent.Invoke(); }
         }
 
+        #if UNITY_EDITOR
         protected override void OnValidate()
         {
             base.OnValidate();
@@ -48,19 +49,19 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
 
             RootUICanvas = UIUtility.GetRootCanvasOrDefault(gameObject);
         }
+        #endif
 
-        
-       private void OnDrawGizmos()
-       {
-           if (RootUICanvas == null || RootUICanvas.Canvas == null) { return; }
+        private void OnDrawGizmos()
+        {
+            if (RootUICanvas == null || RootUICanvas.Canvas == null) { return; }
 
-           Matrix4x4 previousMatrix = Gizmos.matrix;
-           Gizmos.matrix = RootUICanvas.Canvas.GetCanvasMatrix();
-           Gizmos.color  = Color.red;
-           Gizmos.DrawSphere(GetSelectorPosition(), 1f);
-           Gizmos.color  = Color.white;
-           Gizmos.matrix = previousMatrix;
-       }
+            Matrix4x4 previousMatrix = Gizmos.matrix;
+            Gizmos.matrix = RootUICanvas.Canvas.GetCanvasMatrix();
+            Gizmos.color  = Color.red;
+            Gizmos.DrawSphere(GetSelectorPosition(), 1f);
+            Gizmos.color  = Color.white;
+            Gizmos.matrix = previousMatrix;
+        }
 
         public virtual Vector3 GetSelectorPosition() => RectTransform == null ? transform.position : RectTransform.position;
 
