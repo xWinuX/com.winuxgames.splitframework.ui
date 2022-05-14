@@ -18,6 +18,7 @@ namespace WinuXGames.SplitFramework.UI.Elements.Styles
         public override void Apply(UICanvas canvas)
         {
             canvas.Canvas.renderMode                   = _renderMode;
+            canvas.Canvas.pixelPerfect                 = true;
             canvas.Canvas.additionalShaderChannels     = AdditionalCanvasShaderChannels.TexCoord1;
             canvas.CanvasScaler.uiScaleMode            = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             canvas.CanvasScaler.referenceResolution    = _referenceResolution;

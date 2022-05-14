@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using WinuXGames.SplitFramework.UI.Elements.Core;
-using WinuXGames.SplitFramework.UI.Selectables;
 using WinuXGames.SplitFramework.UI.Selectables.Core;
 using WinuXGames.SplitFramework.UI.Utility;
 

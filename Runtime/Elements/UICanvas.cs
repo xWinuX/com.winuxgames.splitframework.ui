@@ -19,7 +19,11 @@ namespace WinuXGames.SplitFramework.UI.Elements
         public void UpdateAllChildren()
         {
             UIBase[] uiInterfaces = GetComponentsInChildren<UIBase>();
-            foreach (UIBase uiInterface in uiInterfaces) { uiInterface.AssignRootCanvas(this); }
+            foreach (UIBase uiInterface in uiInterfaces)
+            {
+                uiInterface.AssignRootCanvas(this);
+                uiInterface.PixelSnap = Style.RenderMode != RenderMode.WorldSpace;
+            }
         }
         
         protected override void ApplyStyle()
