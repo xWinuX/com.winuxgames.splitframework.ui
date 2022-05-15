@@ -13,13 +13,9 @@ namespace WinuXGames.SplitFramework.UI.Elements
         public int Scale { get => _scale; set => _scale = value; }
 
         private Sprite _currentSprite;
-
-        protected override void Awake() { _currentSprite = _image.sprite; }
-
+        
         private  void Update()
         {
-        
-
             #if UNITY_EDITOR
             UpdateSize();
             #endif
@@ -27,7 +23,11 @@ namespace WinuXGames.SplitFramework.UI.Elements
 
         private void LateUpdate()
         {
-            if (_currentSprite != _image.sprite) { UpdateSize(); }
+            if (_currentSprite != _image.sprite)
+            {
+                UpdateSize(); 
+                _currentSprite = _image.sprite;
+            }
         }
         
         private void UpdateSize()
@@ -37,7 +37,7 @@ namespace WinuXGames.SplitFramework.UI.Elements
             _image.SetNativeSize();
             Vector2 currentSize = _image.rectTransform.sizeDelta;
             _image.rectTransform.sizeDelta = new Vector2(currentSize.x * _scale, currentSize.y * _scale);
-            _currentSprite                 = _image.sprite;
+
         }
     }
 }
