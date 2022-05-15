@@ -16,9 +16,9 @@ namespace WinuXGames.SplitFramework.UI.Elements
 
         protected override void Awake() { _currentSprite = _image.sprite; }
 
-        protected override void Update()
+        private  void Update()
         {
-            base.Update();
+        
 
             #if UNITY_EDITOR
             UpdateSize();
