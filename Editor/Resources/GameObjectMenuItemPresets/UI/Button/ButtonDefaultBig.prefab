@@ -46,6 +46,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: bb031944ae0252a40a776cc2ea2f602c,
         type: 3}
+    - target: {fileID: 2715790850599659767, guid: 0ad92ba0468c90148b1f81d75a70a964,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5098083491170844007, guid: 0ad92ba0468c90148b1f81d75a70a964,
         type: 3}
       propertyPath: _style
@@ -54,10 +59,20 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 5950815076354015721, guid: 0ad92ba0468c90148b1f81d75a70a964,
         type: 3}
+      propertyPath: _uiElement
+      value: 
+      objectReference: {fileID: 1520907354069006396}
+    - target: {fileID: 5950815076354015721, guid: 0ad92ba0468c90148b1f81d75a70a964,
+        type: 3}
       propertyPath: _uiDependency
       value: 
       objectReference: {fileID: 11400000, guid: 50fe33bb0cc794b49b35d21630703da1,
         type: 2}
+    - target: {fileID: 5950815076354015721, guid: 0ad92ba0468c90148b1f81d75a70a964,
+        type: 3}
+      propertyPath: _navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5950815076354015721, guid: 0ad92ba0468c90148b1f81d75a70a964,
         type: 3}
       propertyPath: _selectBehaviourSO
@@ -195,3 +210,15 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ad92ba0468c90148b1f81d75a70a964, type: 3}
+--- !u!114 &1520907354069006396 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5098083491170844007, guid: 0ad92ba0468c90148b1f81d75a70a964,
+    type: 3}
+  m_PrefabInstance: {fileID: 6042527514663486811}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b35c87631fa2b4aa37895c5c8d80eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

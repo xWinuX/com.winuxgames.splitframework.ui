@@ -8,8 +8,8 @@ namespace WinuXGames.SplitFramework.UI.Selectables.SelectBehaviours.Button
     {
         [SerializeField] private Sprite _selectedSprite;
 
-        public override void OnSelect(UIButton element) { element.Button.image.sprite = _selectedSprite; }
+        public override void OnSelect(UIButton element) { element.Image.sprite = _selectedSprite; }
 
-        public override void OnDeselect(UIButton element) { element.Button.image.sprite = element.Style.Sprite; }
+        public override void OnDeselect(UIButton element) { element.Image.sprite = element.Style.Sprite; }
     }
 }

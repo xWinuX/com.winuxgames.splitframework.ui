@@ -36,9 +36,9 @@ namespace WinuXGames.SplitFramework.UI.Core
             if (newlySelectedGameObject == null || newlySelectedGameObject.Equals(historyEntry.CurrentlySelected)) { return; }
 
             historyEntry.CurrentlySelected = newlySelectedGameObject;
-            UISelectable uiSelectable = historyEntry.CurrentlySelected.GetComponent<UISelectable>();
-            
-            historyEntry.Selector.Move(uiSelectable.GetSelectorPosition());
+            ISelectable uiSelectable = historyEntry.CurrentlySelected.GetComponent<ISelectable>();
+
+            if (historyEntry.HasSelector) { historyEntry.Selector.Move(uiSelectable.GetSelectorPosition()); }
         }
 
         public void SetSelectableContainer(ISelectablesContainer container, UISelectorBase selectorPrefab = null)
@@ -65,9 +65,10 @@ namespace WinuXGames.SplitFramework.UI.Core
                 _uiDependency.EventSystem.SetSelectedGameObject(null);
                 return;
             }
-            
+
             SelectorHistoryEntry selectorHistoryEntry = _history.Peek();
-            selectorHistoryEntry.Selector.Enter();
+            if (selectorHistoryEntry.HasSelector) { selectorHistoryEntry.Selector.Enter(); }
+
             BlockForOneFrame();
             _uiDependency.EventSystem.SetSelectedGameObject(selectorHistoryEntry.CurrentlySelected);
         }
@@ -77,7 +78,7 @@ namespace WinuXGames.SplitFramework.UI.Core
             if (_history.Count > 0)
             {
                 SelectorHistoryEntry selectorHistoryEntry = _history.Peek();
-                selectorHistoryEntry.Selector.Leave();
+                if (selectorHistoryEntry.HasSelector) { selectorHistoryEntry.Selector.Leave(); }
             }
 
             BlockForOneFrame();
@@ -104,14 +105,17 @@ namespace WinuXGames.SplitFramework.UI.Core
             _history.Clear();
         }
 
-        private static void ClearHistoryEntry(SelectorHistoryEntry selectorHistoryEntry) { selectorHistoryEntry.Selector.Close(); }
+        private static void ClearHistoryEntry(SelectorHistoryEntry selectorHistoryEntry)
+        {
+            if (selectorHistoryEntry.HasSelector) { selectorHistoryEntry.Selector.Close(); }
+        }
 
         private static UISelectorBase CreateAndInitializeSelector(ISelectablesContainer container, UISelectorBase selectorPrefab = null)
         {
             UISelectorBase selector = selectorPrefab == null ? null : Instantiate(selectorPrefab, container.transform);
-            
+
             if (selector == null) { return selector; }
-            
+
             Canvas.ForceUpdateCanvases();
             selector.transform.position = container.Selectables[0].GetSelectorPosition();
 

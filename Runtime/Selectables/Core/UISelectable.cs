@@ -10,11 +10,13 @@ using WinuXGames.SplitFramework.UI.Utility;
 namespace WinuXGames.SplitFramework.UI.Selectables.Core
 {
     [RequireComponent(typeof(RectTransform))]
-    public abstract class UISelectable : Selectable, ISelectable, IUIBehaviour
+    [RequireComponent(typeof(Selectable))]
+    public abstract class UISelectable : MonoBehaviour, ISelectable, IUIBehaviour, ISelectHandler, IDeselectHandler
     {
         [SerializeField] private SO_UIDependencyProvider   _uiDependency;
         [SerializeField] private UnityEvent<BaseEventData> _onSelectUnityEvent;
         [SerializeField] private UnityEvent                _onSubmitUnityEvent;
+        [SerializeField] private Navigation                _navigation;
 
         public UnityEvent                OnSubmitUnityEvent => _onSubmitUnityEvent;
         public UnityEvent<BaseEventData> OnSelectUnityEvent => _onSelectUnityEvent;
@@ -22,11 +24,12 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
         public RectTransform RectTransform { get; protected set; }
         public ICanvas       RootUICanvas  { get; private set; } = new UICanvasMock();
 
+        private Selectable _selectable;
+
         private bool _isSelected;
 
-        protected override void Awake()
+        protected virtual void Awake()
         {
-            base.Awake();
             RootUICanvas  ??= UIUtility.GetRootCanvasOrDefault(gameObject);
             RectTransform =   GetComponent<RectTransform>();
         }
@@ -41,14 +44,17 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
         }
 
         #if UNITY_EDITOR
-        protected override void OnValidate()
+        private void OnValidate()
         {
-            base.OnValidate();
-
-            RectTransform = GetComponent<RectTransform>();
-
-            RootUICanvas = UIUtility.GetRootCanvasOrDefault(gameObject);
+            _selectable           = GetComponent<Selectable>();
+            _selectable.hideFlags = HideFlags.NotEditable | HideFlags.HideInInspector;
+            RectTransform         = GetComponent<RectTransform>();
+            RootUICanvas          = UIUtility.GetRootCanvasOrDefault(gameObject);
         }
+        #endif
+
+        #if UNITY_EDITOR
+        private void Reset() { _selectable.hideFlags = HideFlags.NotEditable; }
         #endif
 
         private void OnDrawGizmos()
@@ -65,17 +71,12 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
 
         public virtual Vector3 GetSelectorPosition() => RectTransform == null ? transform.position : RectTransform.position;
 
-        public override void OnSelect(BaseEventData eventData)
+        public virtual void OnSelect(BaseEventData eventData)
         {
             _isSelected = true;
             _onSelectUnityEvent.Invoke(eventData);
-            base.OnSelect(eventData);
         }
 
-        public override void OnDeselect(BaseEventData eventData)
-        {
-            _isSelected = false;
-            base.OnDeselect(eventData);
-        }
+        public virtual void OnDeselect(BaseEventData eventData) { _isSelected = false; }
     }
 }

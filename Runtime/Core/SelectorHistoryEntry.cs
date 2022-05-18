@@ -10,11 +10,14 @@ namespace WinuXGames.SplitFramework.UI.Core
         public ISelectablesContainer Container         { get; }
         public GameObject            CurrentlySelected { get; set; }
 
+        public bool HasSelector { get; }
+
         public SelectorHistoryEntry(ISelectablesContainer container, UISelectorBase selector, GameObject currentlySelected)
         {
             Selector          = selector;
             Container         = container;
             CurrentlySelected = currentlySelected;
+            HasSelector       = Selector != null;
         }
     }
 }

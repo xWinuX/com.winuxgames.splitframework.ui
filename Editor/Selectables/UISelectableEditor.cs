@@ -17,7 +17,7 @@ namespace WinuXGames.SplitFramework.UI.Editor.Selectables
             EditorGUILayout.Separator();
             
             GUILayout.Label("Navigation", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Navigation"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_navigation"));
             EditorGUILayout.Separator();
             
             GUILayout.Label("Selection", EditorStyles.boldLabel);

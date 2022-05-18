@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using WinuXGames.SplitFramework.UI.Elements.Core;
 using WinuXGames.SplitFramework.UI.Elements.Styles;
 using WinuXGames.SplitFramework.UI.Selectables;
@@ -9,10 +10,13 @@ namespace WinuXGames.SplitFramework.UI.Elements
     {
         [SerializeField] private UISelectableButton _button;
         [SerializeField] private UIText             _buttonText;
+        [SerializeField] private Image              _image;
+
 
         public UISelectableButton Button => _button;
         public UIText             Text   => _buttonText;
-
+        public Image              Image  => _image;
+        
         public void SetText(string text) { _buttonText.SetText(text); }
 
         protected override void ApplyStyle()

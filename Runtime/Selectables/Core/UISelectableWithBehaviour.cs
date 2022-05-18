@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using WinuXGames.SplitFramework.UI.Elements.Core;
-using WinuXGames.SplitFramework.UI.Selectables.SelectBehaviours;
 using WinuXGames.SplitFramework.UI.Selectables.SelectBehaviours.Core;
 
 namespace WinuXGames.SplitFramework.UI.Selectables.Core

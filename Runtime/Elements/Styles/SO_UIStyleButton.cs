@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 namespace WinuXGames.SplitFramework.UI.Elements.Styles
 {
@@ -15,7 +14,7 @@ namespace WinuXGames.SplitFramework.UI.Elements.Styles
 
         public override void Apply(UIButton button)
         {
-            button.Button.image.sprite = _sprite;
+            button.Image.sprite = _sprite;
 
             button.Text.SetStyle(_textStyle);
         }

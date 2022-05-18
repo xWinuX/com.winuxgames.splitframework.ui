@@ -45,7 +45,7 @@ namespace WinuXGames.SplitFramework.UI.Utility
         /// <param name="selectables">Selectables to configure</param>
         /// <param name="navigationMode">Navigation mode to configure for</param>
         /// <exception cref="ArgumentOutOfRangeException">Invalid NavigationMode Enum was passed</exception>
-        public static void ConfigureNavigation(List<UISelectable> selectables, NavigationMode navigationMode)
+        public static void ConfigureNavigation(List<Selectable> selectables, NavigationMode navigationMode)
         {
             for (int i = 0; i < selectables.Count; i++)
             {
