@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using WinuXGames.SplitFramework.Utility;
 using WinuXGames.SplitFramework.UI.Elements;
+using WinuXGames.SplitFramework.UI.Elements.Core;
 using WinuXGames.SplitFramework.UI.Providers;
 using WinuXGames.SplitFramework.UI.Selectables.Core;
 

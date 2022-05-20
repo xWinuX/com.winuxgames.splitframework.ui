@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using UnityEngine.Events;
 using WinuXGames.SplitFramework.Core;
-using WinuXGames.SplitFramework.UI.Selectables;
 using WinuXGames.SplitFramework.UI.Selectables.Core;
 
-namespace WinuXGames.SplitFramework.UI.Elements
+namespace WinuXGames.SplitFramework.UI.Elements.Core
 {
     public interface ISelectablesContainer : ITransform
     {

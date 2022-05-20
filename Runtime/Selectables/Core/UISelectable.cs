@@ -54,7 +54,7 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
         #endif
 
         #if UNITY_EDITOR
-        private void Reset() { _selectable.hideFlags = HideFlags.NotEditable; }
+        private void Reset() { _selectable.hideFlags = HideFlags.NotEditable | HideFlags.NotEditable; }
         #endif
 
         private void OnDrawGizmos()

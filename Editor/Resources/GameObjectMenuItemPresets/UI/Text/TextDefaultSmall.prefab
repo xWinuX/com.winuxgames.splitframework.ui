@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 949698810593968896, guid: 6c0a0941cf05dfe4f8ee7e310bd5a012,
         type: 3}
       propertyPath: m_Name
-      value: TextSmall
+      value: TextDefaultSmall
       objectReference: {fileID: 0}
     - target: {fileID: 949698810593968909, guid: 6c0a0941cf05dfe4f8ee7e310bd5a012,
         type: 3}
@@ -78,12 +78,12 @@ PrefabInstance:
     - target: {fileID: 949698810593968911, guid: 6c0a0941cf05dfe4f8ee7e310bd5a012,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 88
       objectReference: {fileID: 0}
     - target: {fileID: 949698810593968911, guid: 6c0a0941cf05dfe4f8ee7e310bd5a012,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 949698810593968911, guid: 6c0a0941cf05dfe4f8ee7e310bd5a012,
         type: 3}

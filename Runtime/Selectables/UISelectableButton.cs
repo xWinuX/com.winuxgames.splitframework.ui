@@ -4,8 +4,5 @@ using WinuXGames.SplitFramework.UI.Selectables.SelectBehaviours.Button;
 
 namespace WinuXGames.SplitFramework.UI.Selectables
 {
-    public class UISelectableButton : UISelectableWithBehaviour<UIButton, SO_UIButtonSelectBehaviour>
-    {
-
-    }
+    public class UISelectableButton : UISelectableWithBehaviour<UIButton, SO_UIButtonSelectBehaviour> { }
 }

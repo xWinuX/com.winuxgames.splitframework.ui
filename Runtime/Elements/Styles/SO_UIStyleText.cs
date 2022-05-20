@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using WinuXGames.SplitFramework.UI.Elements.Styles.Core;
 
 namespace WinuXGames.SplitFramework.UI.Elements.Styles
 {

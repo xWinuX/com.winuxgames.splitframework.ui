@@ -62,7 +62,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _selectBehaviourSO
       value: 
-      objectReference: {fileID: 11400000, guid: dfae27b3edb1cb54eb34042e99237cf7,
+      objectReference: {fileID: 11400000, guid: 6d31588c0bb95884e9ef12a1422feeec,
         type: 2}
     - target: {fileID: 7998356932298919599, guid: 0ad92ba0468c90148b1f81d75a70a964,
         type: 3}

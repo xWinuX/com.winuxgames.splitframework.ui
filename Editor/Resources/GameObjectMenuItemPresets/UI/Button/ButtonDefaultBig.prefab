@@ -77,7 +77,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _selectBehaviourSO
       value: 
-      objectReference: {fileID: 11400000, guid: 9c4a2be126cdf304da04e9ca84bd1635,
+      objectReference: {fileID: 11400000, guid: aae6e150456786348adb8722cc228330,
         type: 2}
     - target: {fileID: 7998356932298919599, guid: 0ad92ba0468c90148b1f81d75a70a964,
         type: 3}

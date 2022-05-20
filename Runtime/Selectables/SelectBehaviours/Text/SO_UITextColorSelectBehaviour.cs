@@ -3,7 +3,7 @@ using WinuXGames.SplitFramework.UI.Elements;
 
 namespace WinuXGames.SplitFramework.UI.Selectables.SelectBehaviours.Text
 {
-    [CreateAssetMenu(menuName = "Split Framework/UI/SelectBehaviours/Text/Color", fileName = "UITextColorSelectionBehaviour", order = 0)]
+    [CreateAssetMenu(menuName = "Split Framework/UI/Select Behaviours/Text/Color", fileName = "UITextColorSelectionBehaviour", order = 0)]
     public class SO_UITextColorSelectBehaviour : SO_UITextSelectBehaviour
     {
         [SerializeField] private Color _color = Color.white;

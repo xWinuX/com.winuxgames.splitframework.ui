@@ -1,5 +1,6 @@
 using UnityEngine;
 using WinuXGames.SplitFramework.UI.Elements;
+using WinuXGames.SplitFramework.UI.Elements.Core;
 using WinuXGames.SplitFramework.UI.Selectables.Core;
 
 namespace WinuXGames.SplitFramework.UI.Core

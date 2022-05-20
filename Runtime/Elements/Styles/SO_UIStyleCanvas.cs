@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using WinuXGames.SplitFramework.UI.Elements.Styles.Core;
 
 namespace WinuXGames.SplitFramework.UI.Elements.Styles
 {

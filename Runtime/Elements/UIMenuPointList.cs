@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using WinuXGames.SplitFramework.UI.Elements.Core;
-using WinuXGames.SplitFramework.UI.Extensions;
 using WinuXGames.SplitFramework.UI.Selectables.Core;
 using WinuXGames.SplitFramework.UI.Utility;
 
@@ -27,7 +25,6 @@ namespace WinuXGames.SplitFramework.UI.Elements
         {
             base.Awake();
             UIUtility.ConfigureNavigation(_selectables, _navigationMode);
-            //foreach (Selectable selectable in _selectables) { Selectables.Add(selectable.GetComponent<ISelectable>()); }
         }
 
         private void Start()
@@ -61,15 +58,5 @@ namespace WinuXGames.SplitFramework.UI.Elements
         }
 
         private void OnMenuPointSelected(BaseEventData data) { _onMenuPointSelected.Invoke(data); }
-    }
-
-    public class UIInputField : TMP_InputField, ISelectable
-    {
-        [SerializeField] private UnityEvent<BaseEventData> _onSelectUnityEvent;
-
-        public Vector3                   GetSelectorPosition() => m_RectTransform.GetCenterLeftPosition(_corners);
-        public UnityEvent<BaseEventData> OnSelectUnityEvent    => _onSelectUnityEvent;
-
-        private readonly Vector3[] _corners = new Vector3[4];
     }
 }
