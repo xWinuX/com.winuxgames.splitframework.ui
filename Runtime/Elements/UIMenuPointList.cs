@@ -39,6 +39,11 @@ namespace WinuXGames.SplitFramework.UI.Elements
             ValidateSelectables();
         }
 
+        public void UpdateNavigation()
+        {
+            UIUtility.ConfigureNavigation(_selectables, _navigationMode);
+        }
+
         private void ValidateSelectables()
         {
             Selectables.Clear();

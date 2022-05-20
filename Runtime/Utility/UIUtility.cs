@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using WinuXGames.SplitFramework.UI.Core;
@@ -47,7 +48,9 @@ namespace WinuXGames.SplitFramework.UI.Utility
         /// <exception cref="ArgumentOutOfRangeException">Invalid NavigationMode Enum was passed</exception>
         public static void ConfigureNavigation(List<Selectable> selectables, NavigationMode navigationMode)
         {
-            for (int i = 0; i < selectables.Count; i++)
+            List<Selectable> filteredList = selectables.Where(selectable => selectable.isActiveAndEnabled).ToList();
+
+            for (int i = 0; i < filteredList.Count; i++)
             {
                 Selectable selectable = selectables[i];
 
@@ -57,12 +60,12 @@ namespace WinuXGames.SplitFramework.UI.Utility
                 switch (navigationMode)
                 {
                     case NavigationMode.Horizontal:
-                        navigation.selectOnLeft  = i == 0 ? selectables[^1] : selectables[i - 1];
-                        navigation.selectOnRight = i == selectables.Count - 1 ? selectables[0] : selectables[i + 1];
+                        navigation.selectOnLeft  = i == 0 ? filteredList[^1] : filteredList[i - 1];
+                        navigation.selectOnRight = i == filteredList.Count - 1 ? filteredList[0] : filteredList[i + 1];
                         break;
                     case NavigationMode.Vertical:
-                        navigation.selectOnUp   = i == 0 ? selectables[^1] : selectables[i - 1];
-                        navigation.selectOnDown = i == selectables.Count - 1 ? selectables[0] : selectables[i + 1];
+                        navigation.selectOnUp   = i == 0 ? filteredList[^1] : filteredList[i - 1];
+                        navigation.selectOnDown = i == filteredList.Count - 1 ? filteredList[0] : filteredList[i + 1];
                         break;
                     default: throw new ArgumentOutOfRangeException(nameof(navigationMode), navigationMode, null);
                 }
