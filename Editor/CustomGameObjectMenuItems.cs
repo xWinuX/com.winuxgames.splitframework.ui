@@ -20,6 +20,7 @@ namespace WinuXGames.SplitFramework.UI.Editor
         [MenuItem("GameObject/Split Framework/UI/Image", priority = 2)]
         private static void CreateUIImage() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/Image");
         
+        
         [MenuItem("GameObject/Split Framework/UI/Panel/Default Big", priority = 3)]
         private static void CreateUIPanelDefaultBig() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/Panel/PanelDefaultBig");
         
@@ -44,7 +45,11 @@ namespace WinuXGames.SplitFramework.UI.Editor
         private static void CreateUIButtonDefaultSmall() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/Button/ButtonDefaultSmall");
 
 
-        [MenuItem("GameObject/Split Framework/UI/MenuPointList/Default", priority = 6)]
+        [MenuItem("GameObject/Split Framework/UI/InputField/Default", priority = 6)]
+        private static void CreateUIInputFieldDefault() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/InputField/InputFieldDefault");
+        
+        
+        [MenuItem("GameObject/Split Framework/UI/MenuPointList/Default", priority = 7)]
         private static void CreateUIMenuPointList() => EditorUtility.InstantiatePrefabFromResources("GameObjectMenuItemPresets/UI/MenuPointList/MenuPointListDefault");
     }
 }

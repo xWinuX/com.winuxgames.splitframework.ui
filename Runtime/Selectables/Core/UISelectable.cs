@@ -27,6 +27,7 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
         private Selectable _selectable;
 
         private bool _isSelected;
+        private bool _showSelectable;
 
         protected virtual void Awake()
         {
@@ -46,15 +47,15 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
         #if UNITY_EDITOR
         private void OnValidate()
         {
-            _selectable           = GetComponent<Selectable>();
-            _selectable.hideFlags = HideFlags.NotEditable | HideFlags.HideInInspector;
-            RectTransform         = GetComponent<RectTransform>();
-            RootUICanvas          = UIUtility.GetRootCanvasOrDefault(gameObject);
+            _selectable = GetComponent<Selectable>();
+            SetSelectableHideFlags();
+            RectTransform = GetComponent<RectTransform>();
+            RootUICanvas  = UIUtility.GetRootCanvasOrDefault(gameObject);
         }
         #endif
 
         #if UNITY_EDITOR
-        private void Reset() { _selectable.hideFlags = HideFlags.NotEditable | HideFlags.NotEditable; }
+        private void Reset() { SetSelectableHideFlags(); }
         #endif
 
         private void OnDrawGizmos()
@@ -68,6 +69,22 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
             Gizmos.color  = Color.white;
             Gizmos.matrix = previousMatrix;
         }
+
+        [ContextMenu("Show Selectable")]
+        private void ShowSelectable()
+        {
+            _showSelectable = true;
+            SetSelectableHideFlags();
+        }
+
+        [ContextMenu("Hide Selectable")]
+        private void HideSelectable()
+        {
+            _showSelectable = false;
+            SetSelectableHideFlags();
+        }
+
+        private void SetSelectableHideFlags() { _selectable.hideFlags = _showSelectable ? HideFlags.None : HideFlags.NotEditable | HideFlags.HideInInspector; }
 
         public virtual Vector3 GetSelectorPosition() => RectTransform == null ? transform.position : RectTransform.position;
 
