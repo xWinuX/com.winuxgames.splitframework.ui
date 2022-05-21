@@ -22,8 +22,7 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
 
         public RectTransform RectTransform { get; protected set; }
         public ICanvas       RootUICanvas  { get; private set; } = new UICanvasMock();
-
-        private Selectable _selectable;
+        public Selectable    Selectable    { get; private set; }
 
         private bool _isSelected;
         private bool _showSelectable;
@@ -45,7 +44,7 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
 
         private void OnValidate()
         {
-            _selectable = GetComponent<Selectable>();
+            Selectable = GetComponent<Selectable>();
             SetSelectableHideFlags();
             RectTransform = GetComponent<RectTransform>();
             RootUICanvas  = UIUtility.GetRootCanvasOrDefault(gameObject);
@@ -81,9 +80,9 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
 
         private void SetSelectableHideFlags()
         {
-            if (_selectable == null) { return; }
+            if (Selectable == null) { return; }
 
-            _selectable.hideFlags = _showSelectable ? HideFlags.None : HideFlags.NotEditable | HideFlags.HideInInspector;
+            Selectable.hideFlags = _showSelectable ? HideFlags.None : HideFlags.NotEditable | HideFlags.HideInInspector;
         }
 
         public virtual Vector3 GetSelectorPosition() => RectTransform == null ? transform.position : RectTransform.position;

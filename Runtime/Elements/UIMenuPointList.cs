@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using WinuXGames.SplitFramework.UI.Elements.Core;
 using WinuXGames.SplitFramework.UI.Selectables.Core;
@@ -11,11 +12,17 @@ namespace WinuXGames.SplitFramework.UI.Elements
 {
     public class UIMenuPointList : UIBase, ISelectablesContainer
     {
-        [SerializeField] private List<Selectable>          _selectables = new List<Selectable>();
+        [FormerlySerializedAs("_selectables")] [SerializeField]
+        private List<Selectable> _unitySelectables = new List<Selectable>();
         [SerializeField] private NavigationMode            _navigationMode;
         [SerializeField] private UnityEvent<BaseEventData> _onMenuPointSelected;
 
         public List<ISelectable> Selectables { get; } = new List<ISelectable>();
+
+        private readonly List<Selectable>  _filteredUnitySelectables = new List<Selectable>();
+        private readonly List<ISelectable> _unfilteredSelectables    = new List<ISelectable>();
+
+        private readonly List<Selectable> _deleteList = new List<Selectable>();
 
         private UISelectorBase _selector;
         private GameObject     _currentGameObject;
@@ -23,7 +30,7 @@ namespace WinuXGames.SplitFramework.UI.Elements
         protected override void Awake()
         {
             base.Awake();
-            UIUtility.ConfigureNavigation(_selectables, _navigationMode);
+            UpdateStructure();
         }
 
         private void Start()
@@ -35,29 +42,39 @@ namespace WinuXGames.SplitFramework.UI.Elements
         {
             base.OnValidate();
 
-            ValidateSelectables();
-        }
-
-        public void UpdateNavigation()
-        {
-            UIUtility.ConfigureNavigation(_selectables, _navigationMode);
-        }
-
-        private void ValidateSelectables()
-        {
-            Selectables.Clear();
-            List<Selectable> deleteList = new List<Selectable>();
-            foreach (Selectable selectable in _selectables)
+            _deleteList.Clear();
+            _unfilteredSelectables.Clear();
+            foreach (Selectable unitySelectable in _unitySelectables)
             {
-                ISelectable selectableInterface = selectable.GetComponent<ISelectable>();
-                if (selectableInterface == null) { deleteList.Add(selectable); }
-                else { Selectables.Add(selectableInterface); }
+                ISelectable selectableInterface = unitySelectable.GetComponent<ISelectable>();
+                if (selectableInterface == null) { _deleteList.Add(unitySelectable); }
+                else { _unfilteredSelectables.Add(selectableInterface); }
             }
 
-            foreach (Selectable selectable in deleteList)
+            foreach (Selectable selectable in _deleteList)
             {
                 Debug.LogError(selectable + " must implement ISelectable");
-                _selectables.Remove(selectable);
+                _unitySelectables.Remove(selectable);
+            }
+        }
+
+        public void UpdateStructure()
+        {
+            FilterSelectables();
+            UpdateNavigation();
+        }
+
+        private void UpdateNavigation() { UIUtility.ConfigureNavigation(_filteredUnitySelectables, _navigationMode); }
+
+        private void FilterSelectables()
+        {
+            Selectables.Clear();
+            foreach (ISelectable selectable in _unfilteredSelectables)
+            {
+                if (!selectable.gameObject.activeSelf) { continue; }
+
+                Selectables.Add(selectable);
+                _filteredUnitySelectables.Add(selectable.Selectable);
             }
         }
 
