@@ -16,7 +16,6 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
         [SerializeField] private SO_UIDependencyProvider   _uiDependency;
         [SerializeField] private UnityEvent<BaseEventData> _onSelectUnityEvent;
         [SerializeField] private UnityEvent                _onSubmitUnityEvent;
-        [SerializeField] private Navigation                _navigation;
 
         public UnityEvent                OnSubmitUnityEvent => _onSubmitUnityEvent;
         public UnityEvent<BaseEventData> OnSelectUnityEvent => _onSelectUnityEvent;

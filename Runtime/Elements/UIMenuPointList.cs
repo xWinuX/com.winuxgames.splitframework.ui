@@ -11,9 +11,8 @@ namespace WinuXGames.SplitFramework.UI.Elements
 {
     public class UIMenuPointList : UIBase, ISelectablesContainer
     {
-        [SerializeField] private List<Selectable> _selectables = new List<Selectable>();
-        [SerializeField] private NavigationMode   _navigationMode;
-
+        [SerializeField] private List<Selectable>          _selectables = new List<Selectable>();
+        [SerializeField] private NavigationMode            _navigationMode;
         [SerializeField] private UnityEvent<BaseEventData> _onMenuPointSelected;
 
         public List<ISelectable> Selectables { get; } = new List<ISelectable>();

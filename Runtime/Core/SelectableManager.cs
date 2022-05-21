@@ -21,7 +21,7 @@ namespace WinuXGames.SplitFramework.UI.Core
 
         private void Awake()
         {
-            if (SelectablesContainer != null) { SetSelectableContainer(SelectablesContainer, _defaultSelector); }
+            if (SelectablesContainer != null) { SetSelectableContainer(SelectablesContainer, 0, _defaultSelector); }
 
             StartCoroutine(CoroutineUtility.WaitForOneFrame(() => _ready = true));
         }
@@ -42,19 +42,19 @@ namespace WinuXGames.SplitFramework.UI.Core
             if (historyEntry.HasSelector) { historyEntry.Selector.Move(uiSelectable.GetSelectorPosition()); }
         }
 
-        public void SetSelectableContainer(ISelectablesContainer container, UISelectorBase selectorPrefab = null)
+        public void SetSelectableContainer(ISelectablesContainer container, int position = 0, UISelectorBase selectorPrefab = null)
         {
             if (container.Selectables.Count == 0) { return; }
 
             ClearHistory();
-            AssignNewContainerAndPrefab(container, selectorPrefab);
+            AssignNewContainerAndPrefab(container, position, selectorPrefab);
         }
 
-        public void AddSelectableContainer(ISelectablesContainer container, UISelectorBase selectorPrefab = null)
+        public void AddSelectableContainer(ISelectablesContainer container, int position = 0, UISelectorBase selectorPrefab = null)
         {
             if (container.Selectables.Count == 0) { return; }
 
-            AssignNewContainerAndPrefab(container, selectorPrefab);
+            AssignNewContainerAndPrefab(container, position, selectorPrefab);
         }
 
         public void GoBack()
@@ -74,7 +74,7 @@ namespace WinuXGames.SplitFramework.UI.Core
             _uiDependency.EventSystem.SetSelectedGameObject(selectorHistoryEntry.CurrentlySelected);
         }
 
-        private void AssignNewContainerAndPrefab(ISelectablesContainer container, UISelectorBase selectorPrefab)
+        private void AssignNewContainerAndPrefab(ISelectablesContainer container, int position, UISelectorBase selectorPrefab)
         {
             if (_history.Count > 0)
             {
@@ -84,8 +84,8 @@ namespace WinuXGames.SplitFramework.UI.Core
 
             BlockForOneFrame();
 
-            GameObject currentlySelected = container.Selectables[0].gameObject;
-            _history.Push(new SelectorHistoryEntry(container, CreateAndInitializeSelector(container, selectorPrefab), currentlySelected));
+            GameObject currentlySelected = container.Selectables[position].gameObject;
+            _history.Push(new SelectorHistoryEntry(container, CreateAndInitializeSelector(container, position, selectorPrefab), currentlySelected));
             _uiDependency.EventSystem.SetSelectedGameObject(currentlySelected);
         }
 
@@ -94,7 +94,6 @@ namespace WinuXGames.SplitFramework.UI.Core
             Blocked = true;
             StartCoroutine(CoroutineUtility.WaitForOneFrame(() => { Blocked = false; }));
         }
-
 
         private void ClearHistory()
         {
@@ -111,14 +110,14 @@ namespace WinuXGames.SplitFramework.UI.Core
             if (selectorHistoryEntry.HasSelector) { selectorHistoryEntry.Selector.Close(); }
         }
 
-        private static UISelectorBase CreateAndInitializeSelector(ISelectablesContainer container, UISelectorBase selectorPrefab = null)
+        private static UISelectorBase CreateAndInitializeSelector(ISelectablesContainer container, int position = 0, UISelectorBase selectorPrefab = null)
         {
             UISelectorBase selector = selectorPrefab == null ? null : Instantiate(selectorPrefab, container.transform);
 
             if (selector == null) { return selector; }
 
             Canvas.ForceUpdateCanvases();
-            selector.transform.position = container.Selectables[0].GetSelectorPosition();
+            selector.transform.position = container.Selectables[position].GetSelectorPosition();
 
             return selector;
         }

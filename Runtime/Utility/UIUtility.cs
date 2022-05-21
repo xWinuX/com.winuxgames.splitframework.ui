@@ -48,8 +48,10 @@ namespace WinuXGames.SplitFramework.UI.Utility
         /// <exception cref="ArgumentOutOfRangeException">Invalid NavigationMode Enum was passed</exception>
         public static void ConfigureNavigation(List<Selectable> selectables, NavigationMode navigationMode)
         {
-            List<Selectable> filteredList = selectables.Where(selectable => selectable.isActiveAndEnabled).ToList();
+            Debug.Log("in: " + selectables.Count);
+            List<Selectable> filteredList = selectables.Where(selectable => selectable.gameObject.activeSelf).ToList();
 
+            Debug.Log("out: " + filteredList.Count);
             for (int i = 0; i < filteredList.Count; i++)
             {
                 Selectable selectable = selectables[i];

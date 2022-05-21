@@ -7,9 +7,10 @@ namespace WinuXGames.SplitFramework.UI.Core
     public class SelectableManagerUnityEventHandler : SelectableContainerValidator
     {
         [SerializeField] private SO_UIDependencyProvider _uiDependency;
+        [SerializeField] private int                     _position;
         [SerializeField] private UISelectorBase          _selectorPrefab;
 
-        public void SwitchContext() { _uiDependency.SelectableManager.AddSelectableContainer(SelectablesContainer, _selectorPrefab); }
+        public void SwitchContext() { _uiDependency.SelectableManager.AddSelectableContainer(SelectablesContainer, _position, _selectorPrefab); }
 
         public void GoBack() { _uiDependency.SelectableManager.GoBack(); }
     }
