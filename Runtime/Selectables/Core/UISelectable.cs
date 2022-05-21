@@ -44,7 +44,6 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
             ) { _onSubmitUnityEvent.Invoke(); }
         }
 
-        #if UNITY_EDITOR
         private void OnValidate()
         {
             _selectable = GetComponent<Selectable>();
@@ -52,11 +51,8 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
             RectTransform = GetComponent<RectTransform>();
             RootUICanvas  = UIUtility.GetRootCanvasOrDefault(gameObject);
         }
-        #endif
 
-        #if UNITY_EDITOR
         private void Reset() { SetSelectableHideFlags(); }
-        #endif
 
         private void OnDrawGizmos()
         {
@@ -84,7 +80,12 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
             SetSelectableHideFlags();
         }
 
-        private void SetSelectableHideFlags() { _selectable.hideFlags = _showSelectable ? HideFlags.None : HideFlags.NotEditable | HideFlags.HideInInspector; }
+        private void SetSelectableHideFlags()
+        {
+            if (_selectable == null) { return; }
+
+            _selectable.hideFlags = _showSelectable ? HideFlags.None : HideFlags.NotEditable | HideFlags.HideInInspector;
+        }
 
         public virtual Vector3 GetSelectorPosition() => RectTransform == null ? transform.position : RectTransform.position;
 
