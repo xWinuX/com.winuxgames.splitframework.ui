@@ -7,7 +7,7 @@ namespace WinuXGames.SplitFramework.UI.Editor.Selectables
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(UISelectable), true)]
-    public class UISelectableEditor : SelectableEditor
+    public class UISelectableEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
