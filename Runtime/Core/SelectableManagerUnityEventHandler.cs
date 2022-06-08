@@ -13,5 +13,9 @@ namespace WinuXGames.SplitFramework.UI.Core
         public void SwitchContext() { _uiDependency.SelectableManager.AddSelectableContainer(SelectablesContainer, _position, _selectorPrefab); }
 
         public void GoBack() { _uiDependency.SelectableManager.GoBack(); }
+
+        public void Block() { _uiDependency.SelectableManager.Block(); }
+
+        public void Unblock() { _uiDependency.SelectableManager.Unblock(); }
     }
 }

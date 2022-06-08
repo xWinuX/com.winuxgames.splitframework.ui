@@ -42,6 +42,18 @@ namespace WinuXGames.SplitFramework.UI.Core
             if (historyEntry.HasSelector) { historyEntry.Selector.Move(uiSelectable.GetSelectorPosition()); }
         }
 
+        public void Block()
+        {
+            _uiDependency.EventSystem.enabled = false;
+            Blocked                           = true;
+        }
+
+        public void Unblock()
+        {
+            _uiDependency.EventSystem.enabled = true;
+            Blocked                           = false;
+        }
+
         public void SetSelectableContainer(ISelectablesContainer container, int position = 0, UISelectorBase selectorPrefab = null)
         {
             if (container.Selectables.Count == 0) { return; }
@@ -91,8 +103,10 @@ namespace WinuXGames.SplitFramework.UI.Core
 
         private void BlockForOneFrame()
         {
-            Blocked = true;
-            StartCoroutine(CoroutineUtility.WaitForOneFrame(() => { Blocked = false; }));
+            if (Blocked) { return; }
+
+            Block();
+            StartCoroutine(CoroutineUtility.WaitForOneFrame(Unblock));
         }
 
         private void ClearHistory()
