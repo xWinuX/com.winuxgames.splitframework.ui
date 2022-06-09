@@ -30,9 +30,7 @@ namespace WinuXGames.SplitFramework.UI.Elements
         protected override void Awake()
         {
             base.Awake();
-            Validate();
             UpdateStructure();
-            UpdateNavigation();
         }
 
         private void Start()
@@ -48,6 +46,7 @@ namespace WinuXGames.SplitFramework.UI.Elements
 
         public void UpdateStructure()
         {
+            Validate();
             FilterSelectables();
             UpdateNavigation();
         }
