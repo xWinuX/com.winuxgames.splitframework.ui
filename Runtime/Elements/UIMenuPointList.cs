@@ -32,6 +32,7 @@ namespace WinuXGames.SplitFramework.UI.Elements
             base.Awake();
             Validate();
             UpdateStructure();
+            UpdateNavigation();
         }
 
         private void Start()
