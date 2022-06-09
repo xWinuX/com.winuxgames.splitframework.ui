@@ -17,10 +17,16 @@ namespace WinuXGames.SplitFramework.UI.Selectables
 
         private void Awake() { Validate(); }
 
-        private void Start() { _uiDependency.SelectableManager.SetSelectableContainer(_selectablesContainer, _position, _selectorPrefab); }
+        private void Start() { SetFocus();  }
 
         private void OnValidate() { Validate(); }
 
+
+        public void SetFocus()
+        {
+            _uiDependency.SelectableManager.SetSelectableContainer(_selectablesContainer, _position, _selectorPrefab);
+        }
+        
         private void Validate()
         {
             _selectablesContainer = null;
