@@ -21,8 +21,7 @@ namespace WinuXGames.SplitFramework.UI.Elements
 
         private readonly List<Selectable>  _filteredUnitySelectables = new List<Selectable>();
         private readonly List<ISelectable> _unfilteredSelectables    = new List<ISelectable>();
-
-        private readonly List<Selectable> _deleteList = new List<Selectable>();
+        private readonly List<Selectable>  _deleteList               = new List<Selectable>();
 
         private UISelectorBase _selector;
         private GameObject     _currentGameObject;

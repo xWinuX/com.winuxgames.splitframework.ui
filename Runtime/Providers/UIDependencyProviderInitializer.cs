@@ -6,7 +6,7 @@ using WinuXGames.SplitFramework.UI.Core;
 
 namespace WinuXGames.SplitFramework.UI.Providers
 {
-    [DefaultExecutionOrder(-1)]
+    [DefaultExecutionOrder(-10)]
     public class UIDependencyProviderInitializer : ScriptableProviderInitializer<SO_UIDependencyProvider>
     {
         [SerializeField] private EventSystem              _eventSystem;

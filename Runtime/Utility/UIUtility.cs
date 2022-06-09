@@ -52,6 +52,8 @@ namespace WinuXGames.SplitFramework.UI.Utility
             {
                 Selectable selectable = selectables[i];
 
+                if (selectable == null) { return; }
+
                 Navigation navigation = selectable.navigation;
                 navigation.mode = Navigation.Mode.Explicit;
 

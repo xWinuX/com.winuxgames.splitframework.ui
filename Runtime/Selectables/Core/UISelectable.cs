@@ -11,6 +11,7 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
 {
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(Selectable))]
+    [DefaultExecutionOrder(-1)]
     public abstract class UISelectable : MonoBehaviour, ISelectable, IUIBehaviour, ISelectHandler, IDeselectHandler
     {
         [SerializeField] private SO_UIDependencyProvider   _uiDependency;
@@ -29,6 +30,7 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
 
         protected virtual void Awake()
         {
+            GetSelectable();
             RootUICanvas  ??= UIUtility.GetRootCanvasOrDefault(gameObject);
             RectTransform =   GetComponent<RectTransform>();
         }
@@ -44,10 +46,15 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
 
         private void OnValidate()
         {
-            Selectable = GetComponent<Selectable>();
-            SetSelectableHideFlags();
+            GetSelectable();
             RectTransform = GetComponent<RectTransform>();
             RootUICanvas  = UIUtility.GetRootCanvasOrDefault(gameObject);
+        }
+
+        private void GetSelectable()
+        {
+            Selectable = GetComponent<Selectable>();
+            SetSelectableHideFlags();
         }
 
         private void Reset() { SetSelectableHideFlags(); }
