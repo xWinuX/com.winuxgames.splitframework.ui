@@ -30,6 +30,7 @@ namespace WinuXGames.SplitFramework.UI.Elements
         protected override void Awake()
         {
             base.Awake();
+            Validate();
             UpdateStructure();
         }
 
@@ -41,7 +42,19 @@ namespace WinuXGames.SplitFramework.UI.Elements
         protected override void OnValidate()
         {
             base.OnValidate();
+            Validate();
+        }
 
+        public void UpdateStructure()
+        {
+            FilterSelectables();
+            UpdateNavigation();
+        }
+
+        private void UpdateNavigation() { UIUtility.ConfigureNavigation(_filteredUnitySelectables, _navigationMode); }
+        
+        private void Validate()
+        {
             _deleteList.Clear();
             _unfilteredSelectables.Clear();
             foreach (Selectable unitySelectable in _unitySelectables)
@@ -57,14 +70,6 @@ namespace WinuXGames.SplitFramework.UI.Elements
                 _unitySelectables.Remove(selectable);
             }
         }
-
-        public void UpdateStructure()
-        {
-            FilterSelectables();
-            UpdateNavigation();
-        }
-
-        private void UpdateNavigation() { UIUtility.ConfigureNavigation(_filteredUnitySelectables, _navigationMode); }
 
         private void FilterSelectables()
         {
