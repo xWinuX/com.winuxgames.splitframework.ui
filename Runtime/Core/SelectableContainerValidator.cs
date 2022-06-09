@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using WinuXGames.SplitFramework.UI.Elements;
 using WinuXGames.SplitFramework.UI.Elements.Core;
 
 namespace WinuXGames.SplitFramework.UI.Core
@@ -10,7 +9,11 @@ namespace WinuXGames.SplitFramework.UI.Core
 
         protected ISelectablesContainer SelectablesContainer;
         
-        protected virtual void OnValidate()
+        private void Awake() { Validate(); }
+        
+        protected virtual void OnValidate() { Validate(); }
+        
+        private void Validate()
         {
             if (_selectables == null) { return; }
 
@@ -23,5 +26,6 @@ namespace WinuXGames.SplitFramework.UI.Core
                 Debug.LogWarning("Assigned GameObject has no component with interface ISelectableContainer!");
             }
         }
+
     }
 }
