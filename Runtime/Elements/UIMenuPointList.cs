@@ -16,6 +16,7 @@ namespace WinuXGames.SplitFramework.UI.Elements
         private List<Selectable> _unitySelectables = new List<Selectable>();
         [SerializeField] private NavigationMode            _navigationMode;
         [SerializeField] private UnityEvent<BaseEventData> _onMenuPointSelected;
+        [SerializeField] private UnityEvent _onMenuPointSubmit;
 
         public List<ISelectable> Selectables { get; } = new List<ISelectable>();
 
@@ -34,8 +35,14 @@ namespace WinuXGames.SplitFramework.UI.Elements
 
         private void Start()
         {
-            foreach (ISelectable selectable in Selectables) { selectable.OnSelectUnityEvent.AddListener(OnMenuPointSelected); }
+            foreach (ISelectable selectable in Selectables)
+            {
+                selectable.OnSelectUnityEvent.AddListener(OnMenuPointSelected);
+                selectable.OnSubmitUnityEvent.AddListener(OnMenuPointSubmitted);
+            }
         }
+
+
 
         protected override void OnValidate()
         {
@@ -83,5 +90,6 @@ namespace WinuXGames.SplitFramework.UI.Elements
         }
 
         private void OnMenuPointSelected(BaseEventData data) { _onMenuPointSelected.Invoke(data); }
+        private void OnMenuPointSubmitted() { _onMenuPointSubmit.Invoke(); }
     }
 }

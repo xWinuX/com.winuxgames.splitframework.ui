@@ -11,5 +11,6 @@ namespace WinuXGames.SplitFramework.UI.Selectables.Core
         Selectable                Selectable { get; }
         Vector3                   GetSelectorPosition();
         UnityEvent<BaseEventData> OnSelectUnityEvent { get; }
+        UnityEvent                OnSubmitUnityEvent { get; }
     }
 }
